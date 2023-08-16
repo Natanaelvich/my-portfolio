@@ -13,6 +13,7 @@ const Tooltip = ({ children, content }: TooltipProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <TooltipPrimitive.Provider>
     <TooltipPrimitive.Root
       open={isOpen}
       onOpenChange={setIsOpen}
@@ -38,6 +39,7 @@ const Tooltip = ({ children, content }: TooltipProps): JSX.Element => {
         )}
       </AnimatePresence>
     </TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   );
 };
 
