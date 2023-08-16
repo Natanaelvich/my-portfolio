@@ -1,3 +1,4 @@
+import "./index.css"
 import Hero from "./components/Hero";
 
 function App() {
