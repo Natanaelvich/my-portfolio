@@ -1,8 +1,8 @@
+import Hero from "./components/Hero";
+
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">My Portfolio</h1>
-    </div>
+    <Hero />
   );
 }
 
