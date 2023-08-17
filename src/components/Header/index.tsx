@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="flex items-end justify-center w-full h-24 bg-gray-100">
+    <header className="flex items-center justify-end w-full h-24 bg-gray-100 max-w-6xl mx-auto">
       {/* works, blog and contact */}
       <a
         href="#works"
