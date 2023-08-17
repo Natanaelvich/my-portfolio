@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const HashnodeLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg viewBox="0 0 337 337" fill="none" {...props}>
@@ -9,6 +9,6 @@ const HashnodeLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       fill="currentColor"
     />
   </svg>
-);
+)
 
-export default HashnodeLogo;
+export default HashnodeLogo

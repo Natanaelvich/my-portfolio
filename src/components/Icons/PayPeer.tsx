@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const PayPeerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg viewBox="0 0 549 511" {...props}>
@@ -12,7 +12,7 @@ const PayPeerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
           d="M214.299 26.6053C181.986 26.6053 165.829 26.6053 151.486 31.4397C138.798 35.7157 127.193 42.7006 117.475 51.9098C106.488 62.3215 98.9247 76.5982 83.7973 105.152L64.4255 141.717C62.5303 145.294 61.5827 147.083 61.7738 148.542C61.9406 149.816 62.6307 150.962 63.6781 151.706C64.8782 152.558 66.9023 152.558 70.9506 152.558H327.9L395.397 26.6053H214.299Z"
           fill="url(#paint0_radial_4_14)"
           fillOpacity="0.6"
-          style={{ mixBlendMode: "multiply" }}
+          style={{ mixBlendMode: 'multiply' }}
         />
         <path
           d="M177.964 185.105C178.414 184.241 178.638 183.809 178.922 183.455C179.602 182.607 180.558 182.027 181.624 181.815C182.069 181.726 182.556 181.726 183.53 181.726H467.034L455.371 204.407C432.762 248.375 421.458 270.358 402.238 283.541C399.535 285.395 396.735 287.104 393.85 288.66C373.337 299.724 348.617 299.724 299.177 299.724H247.542C217.598 299.724 202.626 299.724 192.596 295.851C168.151 286.41 153.14 261.681 156.045 235.639C157.237 224.952 164.146 211.67 177.964 185.105V185.105Z"
@@ -30,7 +30,7 @@ const PayPeerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
           d="M394.243 26.6053L311.25 182.389H466.712L476.741 163.367C509.488 101.259 464.455 26.6053 394.243 26.6053V26.6053Z"
           fill="url(#paint1_radial_4_14)"
           fillOpacity="0.8"
-          style={{ mixBlendMode: "multiply" }}
+          style={{ mixBlendMode: 'multiply' }}
         />
       </g>
     </g>
@@ -126,6 +126,6 @@ const PayPeerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </radialGradient>
     </defs>
   </svg>
-);
+)
 
-export default PayPeerLogo;
+export default PayPeerLogo

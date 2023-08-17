@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const TwNFTLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -90,6 +90,6 @@ const TwNFTLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </linearGradient>
     </defs>
   </svg>
-);
+)
 
-export default TwNFTLogo;
+export default TwNFTLogo

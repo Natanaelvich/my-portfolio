@@ -1,5 +1,5 @@
-import { SVGProps } from "react";
-import { X } from "react-feather";
+import { SVGProps } from 'react'
+import { X } from 'react-feather'
 
 import {
   NextJSLogo,
@@ -12,12 +12,12 @@ import {
   NotigerLogo,
   TwNFTLogo,
   SecliLogo,
-  PayPeerLogo
-} from ".";
-import StorliLogo from "./Storli";
+  PayPeerLogo,
+} from '.'
+import StorliLogo from './Storli'
 
 interface IconFactoryProps extends SVGProps<SVGSVGElement> {
-  name: string;
+  name: string
 }
 
 const IconFactory = ({
@@ -25,33 +25,33 @@ const IconFactory = ({
   ...otherProps
 }: IconFactoryProps): JSX.Element => {
   switch (name) {
-    case "nextjs":
-      return <NextJSLogo {...otherProps} />;
-    case "typescript":
-      return <TypescriptLogo {...otherProps} />;
-    case "xdox":
-      return <XdoXLogo {...otherProps} />;
-    case "figma":
-      return <FigmaLogo {...otherProps} />;
-    case "tailwindcss":
-      return <TailwindCSSLogo {...otherProps} />;
-    case "go":
-      return <GoLogo {...otherProps} />;
-    case "react":
-      return <ReactLogo {...otherProps} />;
-    case "notiger":
-      return <NotigerLogo {...otherProps} />;
-    case "twnft":
-      return <TwNFTLogo {...otherProps} />;
-    case "storli":
-      return <StorliLogo {...otherProps} />;
-    case "secli":
-      return <SecliLogo {...otherProps} />;
-    case "paypeer":
-      return <PayPeerLogo {...otherProps} />;
+    case 'nextjs':
+      return <NextJSLogo {...otherProps} />
+    case 'typescript':
+      return <TypescriptLogo {...otherProps} />
+    case 'xdox':
+      return <XdoXLogo {...otherProps} />
+    case 'figma':
+      return <FigmaLogo {...otherProps} />
+    case 'tailwindcss':
+      return <TailwindCSSLogo {...otherProps} />
+    case 'go':
+      return <GoLogo {...otherProps} />
+    case 'react':
+      return <ReactLogo {...otherProps} />
+    case 'notiger':
+      return <NotigerLogo {...otherProps} />
+    case 'twnft':
+      return <TwNFTLogo {...otherProps} />
+    case 'storli':
+      return <StorliLogo {...otherProps} />
+    case 'secli':
+      return <SecliLogo {...otherProps} />
+    case 'paypeer':
+      return <PayPeerLogo {...otherProps} />
     default:
-      return <X />;
+      return <X />
   }
-};
+}
 
-export default IconFactory;
+export default IconFactory

@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const StorliLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -100,6 +100,6 @@ const StorliLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default StorliLogo;
+export default StorliLogo

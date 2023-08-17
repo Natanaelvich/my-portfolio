@@ -1,22 +1,22 @@
-import cx from "classnames";
+import cx from 'classnames'
 import {
   AnchorHTMLAttributes,
   cloneElement,
   forwardRef,
   ReactElement,
   ReactNode,
-} from "react";
-import { ArrowUpRight } from "react-feather";
+} from 'react'
+import { ArrowUpRight } from 'react-feather'
 
 interface ExternalLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  href: string;
-  className?: string;
-  children?: ReactNode;
-  gradientUnderline?: boolean;
-  noGradientUnderline?: boolean;
-  noExternalLinkIcon?: boolean;
-  noHighlight?: boolean;
-  icon?: ReactNode;
+  href: string
+  className?: string
+  children?: ReactNode
+  gradientUnderline?: boolean
+  noGradientUnderline?: boolean
+  noExternalLinkIcon?: boolean
+  noHighlight?: boolean
+  icon?: ReactNode
 }
 
 const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
@@ -32,16 +32,16 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
       icon,
       ...otherProps
     }: ExternalLinkProps,
-    ref
+    ref,
   ): JSX.Element => {
-    const isInternalLink = href.startsWith("/") || href.startsWith("#");
+    const isInternalLink = href.startsWith('/') || href.startsWith('#')
 
     const isGradientUnderline = gradientUnderline
       ? true
-      : (typeof children === "string" || typeof children === "undefined") &&
-        !noGradientUnderline
-      ? true
-      : false;
+      : !!(
+          (typeof children === 'string' || typeof children === 'undefined') &&
+          !noGradientUnderline
+        )
 
     return (
       <>
@@ -49,9 +49,9 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
           <a href={href}>
             <a
               className={cx(
-                "transition duration-200",
-                isGradientUnderline && "gradient-underline flex items-center",
-                className
+                'transition duration-200',
+                isGradientUnderline && 'gradient-underline flex items-center',
+                className,
               )}
               ref={ref}
               {...otherProps}
@@ -63,12 +63,12 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
           <a
             href={href}
             className={cx(
-              "mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200",
-              isGradientUnderline && "gradient-underline no-underline",
+              'mr-1 inline-flex items-center space-x-1 text-gray-300 transition duration-200',
+              isGradientUnderline && 'gradient-underline no-underline',
               isGradientUnderline &&
                 !noHighlight &&
-                "text-blue-400 hover:text-blue-300",
-              className
+                'text-blue-400 hover:text-blue-300',
+              className,
             )}
             target="_blank"
             rel="noopener noreferrer"
@@ -76,8 +76,8 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
             {...otherProps}
           >
             {icon &&
-              cloneElement(icon as ReactElement, { className: "h-4 w-4 mr-1" })}
-            {noExternalLinkIcon ? children : <span>{children}</span>}{" "}
+              cloneElement(icon as ReactElement, { className: 'h-4 w-4 mr-1' })}
+            {noExternalLinkIcon ? children : <span>{children}</span>}{' '}
             {!noExternalLinkIcon && <ArrowUpRight className="h-4 w-4" />}
           </a>
         )}
@@ -97,10 +97,10 @@ const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
           }
         `}</style>
       </>
-    );
-  }
-);
+    )
+  },
+)
 
-ExternalLink.displayName = "Link";
+ExternalLink.displayName = 'Link'
 
-export default ExternalLink;
+export default ExternalLink

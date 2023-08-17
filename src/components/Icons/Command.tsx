@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const CommandIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -16,6 +16,6 @@ const CommandIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   >
     <path d="M18 3a3 3 0 00-3 3v12a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3H6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3V6a3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3h12a3 3 0 003-3 3 3 0 00-3-3z" />
   </svg>
-);
+)
 
-export default CommandIcon;
+export default CommandIcon

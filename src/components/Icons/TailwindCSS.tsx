@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const TailwindCSSLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -21,6 +21,6 @@ const TailwindCSSLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default TailwindCSSLogo;
+export default TailwindCSSLogo

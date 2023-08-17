@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const XdoXLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -63,6 +63,6 @@ const XdoXLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </linearGradient>
     </defs>
   </svg>
-);
+)
 
-export default XdoXLogo;
+export default XdoXLogo

@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const Twitterlogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -15,6 +15,6 @@ const Twitterlogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       fill="currentColor"
     />
   </svg>
-);
+)
 
-export default Twitterlogo;
+export default Twitterlogo

@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const TypescriptLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -15,6 +15,6 @@ const TypescriptLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       fillRule="evenodd"
     />
   </svg>
-);
+)
 
-export default TypescriptLogo;
+export default TypescriptLogo

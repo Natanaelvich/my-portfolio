@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const NexJSLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -14,6 +14,6 @@ const NexJSLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       fill="#fff"
     />
   </svg>
-);
+)
 
-export default NexJSLogo;
+export default NexJSLogo

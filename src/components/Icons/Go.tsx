@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const GoLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -10,7 +10,7 @@ const GoLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
     xmlSpace="preserve"
     {...props}
   >
-    <style>{".st4{fill:#00acd7}"}</style>
+    <style>{'.st4{fill:#00acd7}'}</style>
     <path
       className="st4"
       d="M40.2 101.1c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h35.7c.4 0 .5.3.3.6l-1.7 2.6c-.2.3-.7.6-1 .6l-36.2-.1zM25.1 110.3c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h45.6c.4 0 .6.3.5.6l-.8 2.4c-.1.4-.5.6-.9.6l-47.3.1zM49.3 119.5c-.4 0-.5-.3-.3-.6l1.4-2.5c.2-.3.6-.6 1-.6h20c.4 0 .6.3.6.7l-.2 2.4c0 .4-.4.7-.7.7l-21.8-.1z"
@@ -26,6 +26,6 @@ const GoLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       />
     </g>
   </svg>
-);
+)
 
-export default GoLogo;
+export default GoLogo

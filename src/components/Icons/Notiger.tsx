@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const NotigerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -25,6 +25,6 @@ const NotigerLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </linearGradient>
     </defs>
   </svg>
-);
+)
 
-export default NotigerLogo;
+export default NotigerLogo

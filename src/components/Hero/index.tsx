@@ -1,4 +1,4 @@
-import Socials from "../Socials";
+import Socials from '../Socials'
 
 const Hero = (): JSX.Element => {
   return (
@@ -21,13 +21,13 @@ const Hero = (): JSX.Element => {
       </div>
       <div className="will-change-opacity relative h-32 w-32 overflow-hidden rounded-full will-change-transform">
         <img
-          src={"https://github.com/natanaelvich.png"}
+          src={'https://github.com/natanaelvich.png'}
           placeholder="blur"
           alt="Anish De"
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

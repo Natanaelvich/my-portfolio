@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const SecliLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -81,6 +81,6 @@ const SecliLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default SecliLogo;
+export default SecliLogo

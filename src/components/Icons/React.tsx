@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const ReactLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -13,6 +13,6 @@ const ReactLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       <ellipse rx={11} ry={4.2} transform="rotate(120)" />
     </g>
   </svg>
-);
+)
 
-export default ReactLogo;
+export default ReactLogo

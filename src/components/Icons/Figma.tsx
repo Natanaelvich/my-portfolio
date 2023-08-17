@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 const FigmaLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
@@ -33,6 +33,6 @@ const FigmaLogo = (props: SVGProps<SVGSVGElement>): JSX.Element => (
       fill="#A259FF"
     />
   </svg>
-);
+)
 
-export default FigmaLogo;
+export default FigmaLogo
