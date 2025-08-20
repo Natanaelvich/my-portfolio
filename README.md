@@ -112,9 +112,24 @@ my-portfolio/
 - [ ] Adicionar testes automatizados
 - [ ] Otimizar para SEO
 
+## 🚀 Projetos Pessoais
+
+Além do portfólio profissional, também desenvolvo projetos pessoais através da **Solunorde**, minha empresa de tecnologia:
+
+### 📱 Aplicativos Mobile
+- **[Gole A Gole](https://solunorde.com.br/sip-by-sip/)**: App para hidratação e lembretes de água
+- **[HabitUp](https://solunorde.com.br/habitup/)**: Rastreador de hábitos para produtividade
+- **[Serviço Local](https://www.servicolocalapp.com.br/)**: Plataforma de busca de profissionais locais
+
+### 🌐 Websites Corporativos
+- **[Contali](https://www.contaliservicoscontabeis.com.br/)**: Contabilidade eficiente via WhatsApp
+- **[Serviço Local](https://www.servicolocalapp.com.br/)**: Plataforma web para conexões locais
+
+**Visite**: [solunorde.com.br](https://www.solunorde.com.br/)
+
 ## 📧 Contato
 
-- **Email**: contato@natanaellima.dev
+- **Email**: contato@natanaelsilvalima.com.br
 - **LinkedIn**: linkedin.com/in/natanaellima
 - **GitHub**: github.com/natanaellima
 
@@ -133,3 +148,5 @@ Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e dis
 **Desenvolvido com ❤️ por Natanael Silva Lima**
 
 *Tech Lead & Desenvolvedor Fullstack*
+
+**Portfólio online**: [natanaelsilvalima.com.br](https://natanaelsilvalima.com.br)

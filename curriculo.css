@@ -219,6 +219,22 @@ section h3 {
     border-left: 4px solid var(--primary-color);
 }
 
+/* Projetos Pessoais */
+.projetos-pessoais {
+    margin-bottom: 25px;
+}
+
+.projetos-pessoais h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .projeto-item h4 {
     font-size: 15px;
     font-weight: 600;
@@ -241,6 +257,26 @@ section h3 {
     padding: 4px 8px;
     border-radius: 4px;
     display: inline-block;
+}
+
+.projeto-link {
+    margin-top: 8px;
+}
+
+.projeto-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.projeto-link a:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
 /* Formação */

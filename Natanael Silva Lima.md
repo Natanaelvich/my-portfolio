@@ -184,6 +184,37 @@ Competências: React.js · Design de interface do usuário · Jest · Express.js
 
 --------------------------------
 
+## 🚀 Projetos Pessoais
+
+### 📱 Aplicativos Mobile
+- **Gole A Gole**: App para hidratação e lembretes de água
+  - Link: [https://solunorde.com.br/sip-by-sip/](https://solunorde.com.br/sip-by-sip/)
+  - Tecnologias: React Native, Lembretes, Hidratação, Saúde
+
+- **HabitUp**: Rastreador de hábitos para produtividade
+  - Link: [https://solunorde.com.br/habitup/](https://solunorde.com.br/habitup/)
+  - Tecnologias: React Native, Rastreamento, Hábitos, Produtividade
+
+- **Serviço Local**: Plataforma de busca de profissionais locais
+  - Link: [https://www.servicolocalapp.com.br/](https://www.servicolocalapp.com.br/)
+  - Tecnologias: React Native, Busca Local, Avaliações, Conexão
+
+### 🌐 Websites Corporativos
+- **Contali**: Contabilidade eficiente via WhatsApp
+  - Link: [https://www.contaliservicoscontabeis.com.br/](https://www.contaliservicoscontabeis.com.br/)
+  - Tecnologias: Website, WhatsApp, Contabilidade, Gestão Fiscal
+
+- **Serviço Local**: Plataforma web para conexões locais
+  - Link: [https://www.servicolocalapp.com.br/](https://www.servicolocalapp.com.br/)
+  - Tecnologias: Busca Local, Avaliações, Profissionais
+
+### 🏢 Empresa
+- **Solunorde**: Empresa de tecnologia oferecendo soluções inovadoras em software
+  - Link: [https://www.solunorde.com.br/](https://www.solunorde.com.br/)
+  - Serviços: Desenvolvimento Web, Apps Mobile, Consultoria TI, Cloud & DevOps
+
+--------------------------------
+
 Formação acadêmicaFormação acadêmica
 UniFacema
 ANÁLISE E DESENVOLVIMENTO DE SISTEMAS, Desenvolvimento de aplicativos móveis

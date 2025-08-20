@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Cria o link de email com os dados do formulário
             const emailBody = `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
-            const mailtoLink = `mailto:contato@natanaellima.dev?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            const mailtoLink = `mailto:contato@natanaelsilvalima.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Abre o cliente de email padrão
             window.location.href = mailtoLink;
