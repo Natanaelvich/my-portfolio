@@ -97,25 +97,27 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simula envio do formulário
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
+            // Pega os valores do formulário
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject = this.querySelector('input[placeholder="Assunto"]').value;
+            const message = this.querySelector('textarea').value;
             
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
+            // Valida se todos os campos estão preenchidos
+            if (!name || !email || !subject || !message) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
             
-            // Simula delay de envio
-            setTimeout(() => {
-                // Aqui você pode adicionar a lógica real de envio
-                alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
-                
-                // Reseta o formulário
-                this.reset();
-                
-                // Restaura o botão
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            // Cria o link de email com os dados do formulário
+            const emailBody = `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
+            const mailtoLink = `mailto:contato@natanaellima.dev?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Abre o cliente de email padrão
+            window.location.href = mailtoLink;
+            
+            // Reseta o formulário
+            this.reset();
         });
     }
     
