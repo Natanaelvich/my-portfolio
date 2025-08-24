@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.natanaelsilvalima.dev.br/sitemap.xml
+
+# Crawl-delay (opcional - para ser respeitoso com o servidor)
+Crawl-delay: 1
+
+# Permitir todas as páginas principais
+Allow: /index.html
+Allow: /curriculo.html
+Allow: /styles.css
+Allow: /script.js
+
+# Permitir recursos estáticos
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# Bloquear arquivos desnecessários
+Disallow: /README.md
+Disallow: /Natanael Silva Lima.md
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
