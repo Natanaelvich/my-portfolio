@@ -1,0 +1,38 @@
+{
+  "name": "natanael-silva-lima-portfolio",
+  "version": "1.0.0",
+  "description": "Portfólio profissional de Natanael Silva Lima - Tech Lead e Desenvolvedor Fullstack",
+  "main": "generate-sitemap.js",
+  "scripts": {
+    "sitemap": "node generate-sitemap.js",
+    "sitemap:watch": "nodemon --watch . --ext js,html,css --exec 'npm run sitemap'",
+    "dev": "npm run sitemap && echo 'Sitemaps atualizados! Inicie seu servidor local.'",
+    "build": "npm run sitemap && echo 'Build completo! Sitemaps atualizados.'",
+    "deploy": "npm run sitemap && echo 'Sitemaps atualizados! Pronto para deploy.'"
+  },
+  "keywords": [
+    "portfolio",
+    "tech-lead",
+    "fullstack",
+    "react",
+    "react-native",
+    "nodejs",
+    "ai-agents",
+    "seo",
+    "sitemap"
+  ],
+  "author": "Natanael Silva Lima",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natanaelvich/my-portfolio.git"
+  },
+  "homepage": "https://www.natanaelsilvalima.dev.br",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {}
+}
