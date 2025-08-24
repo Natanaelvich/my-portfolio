@@ -129,9 +129,9 @@ Além do portfólio profissional, também desenvolvo projetos pessoais através 
 
 ## 📧 Contato
 
-- **Email**: contato@natanaelsilvalima.com.br
-- **LinkedIn**: linkedin.com/in/natanaellima
-- **GitHub**: github.com/natanaellima
+- **Email**: taelima1997@gmail.com
+- **LinkedIn**: linkedin.com/in/natanaelvich
+- **GitHub**: github.com/natanaelvich
 
 ## 📄 Licença
 
@@ -149,4 +149,4 @@ Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e dis
 
 *Tech Lead & Desenvolvedor Fullstack*
 
-**Portfólio online**: [natanaelsilvalima.com.br](https://natanaelsilvalima.com.br)
+**Portfólio online**: [natanaelsilvalima.dev.br](https://natanaelsilvalima.dev.br)
