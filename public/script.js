@@ -16,15 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
     let lastScrollTop = 0;
     
+    // Adiciona classe at-top por padrão
+    header.classList.add('at-top');
+    
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        // Adiciona/remove classe scrolled baseada no scroll
         if (scrollTop > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            header.classList.add('scrolled');
+            header.classList.remove('at-top');
+        } else if (scrollTop === 0) {
+            header.classList.add('at-top');
+            header.classList.remove('scrolled');
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = 'none';
+            header.classList.remove('scrolled', 'at-top');
         }
         
         // Esconde/mostra header baseado na direção do scroll
@@ -280,12 +286,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adiciona classe ativa ao link da seção atual
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-menu a');
+        const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
         
         let current = '';
         
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop - header.offsetHeight - 100;
             const sectionHeight = section.clientHeight;
             
             if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
