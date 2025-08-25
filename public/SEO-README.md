@@ -15,8 +15,7 @@ Este documento descreve todas as implementações de SEO realizadas no projeto p
 - ✅ `sitemap.html` - Sitemap visual para usuários
 - ✅ `.htaccess` - Otimizações de servidor e redirecionamentos
 
-### 3. **PWA e Performance**
-- ✅ `site.webmanifest` - Manifest para funcionalidades PWA
+### 3. **Performance**
 - ✅ `404.html` - Página de erro personalizada
 - ✅ `google-analytics.html` - Configuração de analytics (opcional)
 
@@ -82,14 +81,7 @@ Para ativar o Google Analytics:
 2. Substitua `GA_MEASUREMENT_ID` pelo seu ID real
 3. Inclua o script no `<head>` das páginas principais
 
-## 📱 Funcionalidades PWA
 
-O `site.webmanifest` inclui:
-- Nome e descrição do app
-- Ícones em diferentes tamanhos
-- Cores de tema
-- Modo standalone
-- Screenshots para instalação
 
 ## 🚀 Otimizações de Performance
 
@@ -188,11 +180,7 @@ Implementado para:
 - ✅ Footer com links úteis
 - ✅ Página 404 amigável
 
-### **PWA**
-- ✅ Manifest configurado
-- ✅ Ícones definidos
-- ✅ Cores de tema
-- ✅ Screenshots
+
 
 ## 🔧 Personalização
 

@@ -262,7 +262,7 @@ function generateSitemapHTML() {
             <ul class="sitemap-links">
                 <li><a href="/sitemap.xml"><i class="fas fa-sitemap"></i> Sitemap XML</a></li>
                 <li><a href="/robots.txt"><i class="fas fa-robot"></i> Robots.txt</a></li>
-                <li><a href="/site.webmanifest"><i class="fas fa-mobile-alt"></i> Manifest PWA</a></li>
+
             </ul>
         </div>
 

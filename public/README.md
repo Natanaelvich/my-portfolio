@@ -108,7 +108,7 @@ my-portfolio/
 - [ ] Adicionar blog ou artigos
 - [ ] Integrar com CMS (Strapi, Contentful)
 - [ ] Adicionar analytics (Google Analytics, Plausible)
-- [ ] Implementar PWA (Progressive Web App)
+
 - [ ] Adicionar testes automatizados
 - [ ] Otimizar para SEO
 
