@@ -107,8 +107,9 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .nav-menu a {
@@ -556,6 +557,17 @@ body {
     padding: 80px 0;
 }
 
+/* Personal Projects Section */
+.personal-projects {
+    padding: 80px 0;
+}
+
+/* AI & Automation Projects Section */
+.ai-projects {
+    padding: 80px 0;
+    margin-top: 2rem;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -810,6 +822,16 @@ body {
 }
 
 /* Responsividade */
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-menu a {
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav {
         padding: 1rem 1.5rem;
