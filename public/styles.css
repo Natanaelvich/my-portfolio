@@ -582,11 +582,24 @@ body {
     align-items: center;
     justify-content: center;
     color: white;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
 }
 
 .project-image i {
     font-size: 4rem;
     opacity: 0.9;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-image img:hover {
+    transform: scale(1.05);
 }
 
 .project-content {
