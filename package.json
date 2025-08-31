@@ -6,7 +6,7 @@
   "scripts": {
     "sitemap": "node generate-sitemap.js",
     "sitemap:watch": "nodemon --watch . --ext js,html,css --exec 'npm run sitemap'",
-    "dev": "npm run sitemap && echo 'Sitemaps atualizados! Inicie seu servidor local.'",
+    "dev": "cd public && python -m http.server 5173",
     "build": "npm run sitemap && echo 'Build completo! Sitemaps atualizados.'",
     "deploy": "npm run sitemap && echo 'Sitemaps atualizados! Pronto para deploy.'"
   },
