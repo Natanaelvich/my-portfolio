@@ -339,21 +339,38 @@ body {
     transform: translateY(-2px);
 }
 
-.btn-cv {
+.btn-cv,
+.btn.btn-cv {
     background: var(--gradient-accent);
     color: white;
     border: 2px solid transparent;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
 }
 
-.btn-cv:hover {
+.btn-cv:hover,
+.btn.btn-cv:hover {
     background: white;
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
     border-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+}
+
+.btn-cv:hover i,
+.btn.btn-cv:hover i {
+    color: var(--accent-color) !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-cv i {
+    color: inherit;
+    opacity: 1;
+    visibility: visible;
+    transition: color 0.3s ease;
 }
 
 .tech-stack {
@@ -1150,6 +1167,7 @@ body {
     
     .hero-buttons .btn-cv {
         order: 3;
+        justify-content: center;
     }
 }
 
