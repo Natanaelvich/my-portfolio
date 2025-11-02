@@ -192,6 +192,7 @@ body {
 .nav-menu .btn-cv:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    background: var(--primary-light);
     color: white;
 }
 
@@ -341,8 +342,8 @@ body {
 
 .btn-cv,
 .btn.btn-cv {
-    background: var(--gradient-accent);
-    color: white;
+    background: white;
+    color: var(--primary-color);
     border: 2px solid transparent;
     display: flex;
     align-items: center;
@@ -352,16 +353,16 @@ body {
 
 .btn-cv:hover,
 .btn.btn-cv:hover {
-    background: white;
-    color: var(--accent-color) !important;
-    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border-color: rgba(30, 58, 138, 0.3);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-cv:hover i,
 .btn.btn-cv:hover i {
-    color: var(--accent-color) !important;
+    color: var(--primary-color) !important;
     opacity: 1;
     visibility: visible;
 }
