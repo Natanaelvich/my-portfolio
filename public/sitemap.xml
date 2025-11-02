@@ -7,7 +7,7 @@
     <!-- Página Principal -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,7 +15,7 @@
     <!-- Página do Currículo -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/curriculo.html</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -23,42 +23,42 @@
     <!-- Seções da Página Principal -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#about</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#experience</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#skills</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#projects</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#personal-projects</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#contact</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -66,7 +66,7 @@
     <!-- Páginas Adicionais -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/sitemap.html</loc>
-        <lastmod>2025-08-24</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
