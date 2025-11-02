@@ -123,6 +123,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // 4. Substituir 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' e inicializar com seu Public Key
     
     if (contactForm) {
+        // Efeito ripple ao clicar no botão
+        submitBtn?.addEventListener('click', function(e) {
+            const ripple = submitBtn.querySelector('.btn-ripple');
+            if (ripple) {
+                // Reseta a animação
+                ripple.style.animation = 'none';
+                ripple.style.opacity = '0';
+                ripple.style.transform = 'scale(0)';
+                
+                // Força reflow
+                void ripple.offsetWidth;
+                
+                // Inicia a animação
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.opacity = '1';
+            }
+        });
+        
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -152,41 +170,39 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormStatus('', '');
             
             try {
-                // Opção 1: Usar EmailJS (requer configuração)
-                // Descomente e configure quando tiver EmailJS configurado:
-                /*
-                await emailjs.send(
-                    'YOUR_SERVICE_ID',  // Substitua pelo seu Service ID
-                    'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID
-                    {
-                        from_name: formData.name,
-                        from_email: formData.email,
-                        subject: formData.subject,
-                        message: formData.message,
-                        to_email: 'taelima1997@gmail.com'
-                    }
-                );
-                */
+                // Formata o corpo do email de forma profissional
+                const emailBody = `Olá Natanael,
+
+Meu nome é ${formData.name} e meu email é ${formData.email}.
+
+${formData.message}
+
+Atenciosamente,
+${formData.name}`;
+
+                // Cria o link mailto com o email do usuário como CC (para cópia)
+                const mailtoLink = `mailto:taelima1997@gmail.com?cc=${encodeURIComponent(formData.email)}&subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
                 
-                // Opção 2: Fallback para mailto (temporário até configurar EmailJS)
-                const emailBody = `Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`;
-                const mailtoLink = `mailto:taelima1997@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+                // Cria um elemento <a> temporário e dispara o clique (forma mais confiável)
+                const mailtoElement = document.createElement('a');
+                mailtoElement.href = mailtoLink;
+                mailtoElement.style.display = 'none';
+                document.body.appendChild(mailtoElement);
                 
-                // Abre o cliente de email padrão
-                window.location.href = mailtoLink;
+                // Dispara o clique para abrir o cliente de email
+                mailtoElement.click();
                 
-                // Simula sucesso (remover quando EmailJS estiver configurado)
+                // Remove o elemento temporário
                 setTimeout(() => {
-                    showFormStatus('Mensagem enviada com sucesso! Responderei em breve.', 'success');
+                    document.body.removeChild(mailtoElement);
+                }, 100);
+                
+                // Mostra mensagem de sucesso
+                setTimeout(() => {
+                    showFormStatus('Cliente de email aberto! Complete o envio no seu aplicativo de email.', 'success');
                     contactForm.reset();
                     setFormLoading(false);
-                }, 500);
-                
-                // Quando EmailJS estiver configurado, use isto:
-                /*
-                showFormStatus('Mensagem enviada com sucesso! Responderei em breve.', 'success');
-                contactForm.reset();
-                */
+                }, 300);
                 
             } catch (error) {
                 console.error('Erro ao enviar formulário:', error);
@@ -219,19 +235,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function setFormLoading(loading) {
-        if (!submitBtn || !btnText || !btnLoader) return;
+        if (!submitBtn || !btnLoader) return;
         
         if (loading) {
             submitBtn.disabled = true;
-            btnText.style.display = 'none';
-            btnLoader.style.display = 'inline-flex';
-            submitBtn.style.opacity = '0.7';
+            submitBtn.classList.add('loading');
+            btnLoader.style.display = 'flex';
             submitBtn.style.cursor = 'not-allowed';
         } else {
             submitBtn.disabled = false;
-            btnText.style.display = 'inline';
+            submitBtn.classList.remove('loading');
             btnLoader.style.display = 'none';
-            submitBtn.style.opacity = '1';
             submitBtn.style.cursor = 'pointer';
         }
     }

@@ -777,31 +777,61 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-header">
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="contact-subtitle">Estou sempre aberto a novas oportunidades e parcerias interessantes. Vamos criar algo incrível juntos!</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Vamos Conversar!</h3>
-                    <p>
-                        Estou sempre aberto a novas oportunidades e parcerias interessantes. 
-                        Se você tem um projeto em mente ou gostaria de discutir possibilidades, 
-                        não hesite em entrar em contato.
-                    </p>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Vamos Conversar!</h3>
+                        <p>
+                            Se você tem um projeto em mente ou gostaria de discutir possibilidades, 
+                            não hesite em entrar em contato. Estou pronto para transformar suas ideias em realidade.
+                        </p>
+                    </div>
                     <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <span>taelima1997@gmail.com</span>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fab fa-linkedin"></i>
-                            <span>linkedin.com/in/natanaelvich</span>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fab fa-github"></i>
-                            <span>github.com/natanaelvich</span>
-                        </div>
+                        <a href="mailto:taelima1997@gmail.com" class="contact-method" aria-label="Enviar email">
+                            <div class="contact-method-icon email">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <span class="contact-method-label">Email</span>
+                                <span class="contact-method-value">taelima1997@gmail.com</span>
+                            </div>
+                            <i class="fas fa-chevron-right contact-method-arrow"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/natanaelvich" target="_blank" rel="noopener noreferrer" class="contact-method" aria-label="Abrir LinkedIn">
+                            <div class="contact-method-icon linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <span class="contact-method-label">LinkedIn</span>
+                                <span class="contact-method-value">linkedin.com/in/natanaelvich</span>
+                            </div>
+                            <i class="fas fa-chevron-right contact-method-arrow"></i>
+                        </a>
+                        <a href="https://github.com/natanaelvich" target="_blank" rel="noopener noreferrer" class="contact-method" aria-label="Abrir GitHub">
+                            <div class="contact-method-icon github">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <span class="contact-method-label">GitHub</span>
+                                <span class="contact-method-value">github.com/natanaelvich</span>
+                            </div>
+                            <i class="fas fa-chevron-right contact-method-arrow"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form-wrapper">
+                    <div class="contact-form-header">
+                        <h3>Envie uma Mensagem</h3>
+                        <p>Preencha o formulário abaixo e entrarei em contato o mais rápido possível.</p>
+                    </div>
+                    <div class="contact-form">
                     <form id="contact-form">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Seu Nome" required aria-label="Seu nome">
@@ -816,13 +846,21 @@
                             <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required aria-label="Sua mensagem"></textarea>
                         </div>
                         <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn">
-                            <span class="btn-text">Enviar Mensagem</span>
-                            <span class="btn-loader" style="display: none;">
-                                <i class="fas fa-spinner fa-spin"></i> Enviando...
+                        <button type="submit" class="btn-submit" id="submit-btn">
+                            <span class="btn-content">
+                                <span class="btn-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                                <span class="btn-text">Enviar Mensagem</span>
                             </span>
+                            <span class="btn-loader" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Enviando...</span>
+                            </span>
+                            <span class="btn-ripple"></span>
                         </button>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
