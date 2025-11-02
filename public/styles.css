@@ -6,24 +6,28 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary-color: #64748b;
-    --accent-color: #06b6d4;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-light: #94a3b8;
+    /* Paleta profissional e séria */
+    --primary-color: #1e3a8a;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --secondary-color: #4b5563;
+    --accent-color: #475569;
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-light: #6b7280;
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --bg-dark: #0f172a;
-    --border-color: #e2e8f0;
+    --bg-secondary: #f9fafb;
+    --bg-tertiary: #f3f4f6;
+    --bg-dark: #111827;
+    --border-color: #e5e7eb;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* Gradientes sutis e profissionais */
+    --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    --gradient-secondary: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    --gradient-accent: linear-gradient(135deg, #475569 0%, #64748b 100%);
 }
 
 html {
@@ -94,34 +98,24 @@ body {
 .nav-brand h1 {
     font-size: 1.75rem;
     font-weight: 800;
-    color: var(--primary-color); /* Fallback para navegadores antigos */
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
     letter-spacing: -0.025em;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     position: relative;
-    text-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
 }
 
 .nav-brand h1 i {
     font-size: 1.5rem;
-    color: var(--accent-color); /* Fallback para navegadores antigos */
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
     animation: pulse 2s infinite;
 }
 
 .nav-brand h1:hover {
     transform: scale(1.02);
-    filter: brightness(1.1);
-    text-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+    filter: brightness(1.05);
 }
 
 .nav-brand h1:hover i {
@@ -217,6 +211,9 @@ body {
     padding: 0.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
 .nav-toggle:hover {
@@ -235,7 +232,7 @@ body {
 /* Hero Section */
 .hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     color: white;
     position: relative;
     overflow: hidden;
@@ -266,6 +263,26 @@ body {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1rem;
+    position: relative;
+    will-change: opacity, transform, filter;
+    /* Animação moderna: fade-in com slide-up e blur (sem layout shift) */
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    animation: titleEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+}
+
+@keyframes titleEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
 }
 
 .hero-subtitle {
@@ -741,7 +758,7 @@ body {
 }
 
 .status-badge.active {
-    background: #10b981;
+    background: #059669;
     color: white;
 }
 
@@ -829,6 +846,62 @@ body {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+.form-status {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.form-status.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #34d399;
+}
+
+.form-status.error {
+    background-color: #fee2e2;
+    color: #7f1d1d;
+    border: 1px solid #f87171;
+}
+
+#submit-btn {
+    position: relative;
+    width: 100%;
+}
+
+.btn-loader {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-loader i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #dc2626;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #059669;
 }
 
 /* Footer */
@@ -919,6 +992,27 @@ body {
     
     .nav-menu {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: var(--shadow-xl);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        z-index: 999;
+        border-top: 1px solid var(--border-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        max-height: 600px;
+        opacity: 1;
     }
     
     /* Botão CV no mobile - esconder do menu principal */
@@ -928,6 +1022,19 @@ body {
     
     .nav-toggle {
         display: flex;
+        z-index: 1001;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
     }
     
     .hero-content {
@@ -1146,4 +1253,42 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
+}
+
+/* Skip link para acessibilidade */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 10000;
+    border-radius: 0 0 4px 0;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Melhorias de acessibilidade - focus visible */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Melhorias para navegação por teclado */
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }

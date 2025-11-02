@@ -18,7 +18,9 @@
     <meta property="og:url" content="https://www.natanaelsilvalima.dev.br/">
     <meta property="og:title" content="Natanael Silva Lima - Desenvolvedor Fullstack & Tech Lead">
     <meta property="og:description" content="Tech Lead e Desenvolvedor Fullstack especializado em React, React Native, Node.js e AI Agents. 4+ anos de experiência liderando equipes e desenvolvendo aplicações escaláveis.">
-    <meta property="og:image" content="https://www.natanaelsilvalima.dev.br/images/og-image.jpg">
+    <meta property="og:image" content="https://www.natanaelsilvalima.dev.br/projeto-abril.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Natanael Silva Lima - Portfólio">
     <meta property="og:locale" content="pt_BR">
     
@@ -27,7 +29,7 @@
     <meta property="twitter:url" content="https://www.natanaelsilvalima.dev.br/">
     <meta property="twitter:title" content="Natanael Silva Lima - Desenvolvedor Fullstack & Tech Lead">
     <meta property="twitter:description" content="Tech Lead e Desenvolvedor Fullstack especializado em React, React Native, Node.js e AI Agents. 4+ anos de experiência liderando equipes e desenvolvendo aplicações escaláveis.">
-    <meta property="twitter:image" content="https://www.natanaelsilvalima.dev.br/images/twitter-image.jpg">
+    <meta property="twitter:image" content="https://www.natanaelsilvalima.dev.br/projeto-abril.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.natanaelsilvalima.dev.br/">
@@ -42,12 +44,15 @@
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Schema.org markup for Google+ -->
     <script type="application/ld+json">
@@ -87,6 +92,8 @@
     </script>
 </head>
 <body>
+    <!-- Skip link para acessibilidade -->
+    <a href="#main" class="skip-link">Pular para conteúdo</a>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
@@ -102,15 +109,16 @@
                 <li><a href="#contact">Contato</a></li>
                 <li><a href="/natan-cv.pdf" download="Natanael-Silva-Lima-CV.pdf" class="btn-cv"><i class="fas fa-download"></i> Download CV</a></li>
             </ul>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-label="Menu de navegação" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </nav>
     </header>
 
     <!-- Hero Section -->
+    <main id="main">
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -617,7 +625,7 @@
                                 <span>Cloud & DevOps</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://www.solunorde.com.br/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                                <a href="https://www.solunorde.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visitar Site</a>
                             </div>
                         </div>
                     </div>
@@ -636,7 +644,7 @@
                                 <span>Saúde</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://solunorde.com.br/sip-by-sip/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                                <a href="https://solunorde.com.br/sip-by-sip/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visitar Site</a>
                             </div>
                         </div>
                     </div>
@@ -655,7 +663,7 @@
                                 <span>Produtividade</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://solunorde.com.br/habitup/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                                <a href="https://solunorde.com.br/habitup/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visitar Site</a>
                             </div>
                         </div>
                     </div>
@@ -674,7 +682,7 @@
                                 <span>Conexão</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://www.servicolocalapp.com.br/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                                <a href="https://www.servicolocalapp.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visitar Site</a>
                             </div>
                         </div>
                     </div>
@@ -693,7 +701,7 @@
                                 <span>Gestão Fiscal</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://www.contaliservicoscontabeis.com.br/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                                <a href="https://www.contaliservicoscontabeis.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visitar Site</a>
                             </div>
                         </div>
                     </div>
@@ -720,7 +728,7 @@
                                 <span>Tailwind</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://github.com/Natanaelvich/ai-resume-analyzer" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+                                <a href="https://github.com/Natanaelvich/ai-resume-analyzer" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver no GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -739,7 +747,7 @@
                                 <span>PostgreSQL</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://github.com/Natanaelvich/ai-smart-marketplace" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+                                <a href="https://github.com/Natanaelvich/ai-smart-marketplace" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver no GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -758,7 +766,7 @@
                                 <span>PostgreSQL</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://github.com/Natanaelvich/ai-ask-recorder-live_rocketseat-25" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+                                <a href="https://github.com/Natanaelvich/ai-ask-recorder-live_rocketseat-25" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver no GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -794,25 +802,32 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contact-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Seu Nome" required>
+                            <input type="text" id="name" name="name" placeholder="Seu Nome" required aria-label="Seu nome">
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Seu Email" required>
+                            <input type="email" id="email" name="email" placeholder="Seu Email" required aria-label="Seu email">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Assunto" required>
+                            <input type="text" id="subject" name="subject" placeholder="Assunto" required aria-label="Assunto da mensagem">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required aria-label="Sua mensagem"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <span class="btn-text">Enviar Mensagem</span>
+                            <span class="btn-loader" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Enviando...
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -821,8 +836,8 @@
                 <div class="footer-main">
                     <p>&copy; 2025 Natanael Silva Lima. Todos os direitos reservados.</p>
                     <div class="footer-social">
-                        <a href="https://linkedin.com/in/natanaelvich" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/natanaelvich" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/natanaelvich" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/natanaelvich" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
@@ -835,6 +850,8 @@
         </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

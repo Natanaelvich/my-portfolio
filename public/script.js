@@ -7,8 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        });
+        
+        // Fecha o menu ao clicar em um link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
         });
     }
     
@@ -96,35 +106,134 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Formulário de contato
-    const contactForm = document.querySelector('.contact-form form');
+    // Formulário de contato com EmailJS
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnLoader = submitBtn?.querySelector('.btn-loader');
+    
+    // Inicializar EmailJS (você precisa criar uma conta em https://www.emailjs.com/)
+    // Substitua 'YOUR_PUBLIC_KEY' pelo seu Public Key do EmailJS
+    // Exemplo: emailjs.init('abc123xyz');
+    // Para usar, você precisa configurar:
+    // 1. Criar conta no EmailJS (gratuito)
+    // 2. Configurar um serviço de email (Gmail, Outlook, etc.)
+    // 3. Criar um template de email
+    // 4. Substituir 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' e inicializar com seu Public Key
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Pega os valores do formulário
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const subject = this.querySelector('input[placeholder="Assunto"]').value;
-            const message = this.querySelector('textarea').value;
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
             
-            // Valida se todos os campos estão preenchidos
-            if (!name || !email || !subject || !message) {
-                alert('Por favor, preencha todos os campos.');
+            // Validação
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showFormStatus('Por favor, preencha todos os campos.', 'error');
                 return;
             }
             
-            // Cria o link de email com os dados do formulário
-            const emailBody = `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
-            const mailtoLink = `mailto:taelima1997@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            // Validação de email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                showFormStatus('Por favor, insira um email válido.', 'error');
+                return;
+            }
             
-            // Abre o cliente de email padrão
-            window.location.href = mailtoLink;
+            // Mostra loading
+            setFormLoading(true);
+            showFormStatus('', '');
             
-            // Reseta o formulário
-            this.reset();
+            try {
+                // Opção 1: Usar EmailJS (requer configuração)
+                // Descomente e configure quando tiver EmailJS configurado:
+                /*
+                await emailjs.send(
+                    'YOUR_SERVICE_ID',  // Substitua pelo seu Service ID
+                    'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID
+                    {
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                        to_email: 'taelima1997@gmail.com'
+                    }
+                );
+                */
+                
+                // Opção 2: Fallback para mailto (temporário até configurar EmailJS)
+                const emailBody = `Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`;
+                const mailtoLink = `mailto:taelima1997@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Abre o cliente de email padrão
+                window.location.href = mailtoLink;
+                
+                // Simula sucesso (remover quando EmailJS estiver configurado)
+                setTimeout(() => {
+                    showFormStatus('Mensagem enviada com sucesso! Responderei em breve.', 'success');
+                    contactForm.reset();
+                    setFormLoading(false);
+                }, 500);
+                
+                // Quando EmailJS estiver configurado, use isto:
+                /*
+                showFormStatus('Mensagem enviada com sucesso! Responderei em breve.', 'success');
+                contactForm.reset();
+                */
+                
+            } catch (error) {
+                console.error('Erro ao enviar formulário:', error);
+                showFormStatus('Erro ao enviar mensagem. Por favor, tente novamente ou envie diretamente para taelima1997@gmail.com', 'error');
+            } finally {
+                setFormLoading(false);
+            }
         });
+    }
+    
+    function showFormStatus(message, type) {
+        if (!formStatus) return;
+        
+        formStatus.textContent = message;
+        formStatus.className = 'form-status';
+        
+        if (type === 'success') {
+            formStatus.classList.add('success');
+        } else if (type === 'error') {
+            formStatus.classList.add('error');
+        }
+        
+        // Remove mensagem após 5 segundos
+        if (message && type !== 'error') {
+            setTimeout(() => {
+                formStatus.textContent = '';
+                formStatus.className = 'form-status';
+            }, 5000);
+        }
+    }
+    
+    function setFormLoading(loading) {
+        if (!submitBtn || !btnText || !btnLoader) return;
+        
+        if (loading) {
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-flex';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+        } else {
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoader.style.display = 'none';
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor = 'pointer';
+        }
     }
     
     // Efeito de parallax no hero
@@ -187,30 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Efeito de digitação no título do hero
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.textContent = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        
-        type();
-    }
-    
-    // Aplica efeito de digitação ao título principal
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = heroTitle.textContent;
-        setTimeout(() => {
-            typeWriter(heroTitle, originalText, 80);
-        }, 500);
-    }
+    // Animação do título é feita apenas com CSS (sem layout shift)
     
     // Filtro de habilidades (opcional)
     const skillCategories = document.querySelectorAll('.skill-category');
