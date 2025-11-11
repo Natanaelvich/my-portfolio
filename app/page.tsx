@@ -453,9 +453,10 @@ export default function HomePage() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          const animatedElement = entry.target;
+          animatedElement.style.opacity = "1";
+          animatedElement.style.transform = "translateY(0)";
         }
       });
     }, observerOptions);

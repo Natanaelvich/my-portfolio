@@ -1001,7 +1001,7 @@ body {
 }
 
 .footer-main p {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1rem;
 }
 
@@ -1014,17 +1014,18 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgba(255, 255, 255, 0.95);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .footer-social a:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
 }
 
 .footer-links {
@@ -1034,13 +1035,15 @@ body {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: white;
+  color: #ffffff;
+  text-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
 }
 
 @keyframes pulse {
