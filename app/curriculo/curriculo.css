@@ -1,0 +1,475 @@
+.curriculo-page {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-light: #94a3b8;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  background-color: var(--bg-secondary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 40px 0 80px;
+}
+
+.curriculo-page *,
+.curriculo-page *::before,
+.curriculo-page *::after {
+  box-sizing: border-box;
+}
+
+.curriculo-page .curriculo-container {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.curriculo-page .resume-header {
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.curriculo-page .resume-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.curriculo-page .resume-name-role h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.curriculo-page .resume-name-role h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.curriculo-page .resume-specialties {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.curriculo-page .resume-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 250px;
+}
+
+.curriculo-page .resume-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.curriculo-page .resume-contact-item i {
+  color: var(--primary-color);
+  width: 16px;
+  font-size: 14px;
+}
+
+.curriculo-page section {
+  margin-bottom: 25px;
+}
+
+.curriculo-page section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.curriculo-page .resume-summary p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+.curriculo-page .resume-experience-item {
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.curriculo-page .resume-experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.curriculo-page .resume-experience-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 200px;
+}
+
+.curriculo-page .resume-company {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.curriculo-page .resume-period {
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.curriculo-page .resume-experience-item ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.curriculo-page .resume-experience-item li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.curriculo-page .resume-experience-item li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
+.curriculo-page .resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.curriculo-page .resume-skill-category {
+  background: var(--bg-secondary);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.curriculo-page .resume-skill-category h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.curriculo-page .resume-skill-category ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.curriculo-page .resume-skill-category li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.curriculo-page .resume-skill-category li::before {
+  content: "▸";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+}
+
+.curriculo-page .resume-project-item {
+  margin-bottom: 18px;
+  padding: 15px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.curriculo-page .resume-project-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.curriculo-page .resume-project-item p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.curriculo-page .resume-tech-stack {
+  font-size: 11px;
+  color: var(--primary-color);
+  font-weight: 500;
+  background: var(--bg-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.curriculo-page .resume-project-link {
+  margin-top: 8px;
+}
+
+.curriculo-page .resume-project-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.curriculo-page .resume-project-link a:hover {
+  background: var(--primary-color);
+  color: var(--bg-primary);
+}
+
+.curriculo-page .resume-education-item {
+  background: var(--bg-secondary);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.curriculo-page .resume-education-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.curriculo-page .resume-institution {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 13px;
+  margin-right: 15px;
+}
+
+.curriculo-page .resume-education-item .resume-period {
+  font-size: 12px;
+}
+
+.curriculo-page .resume-education-item p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
+
+.curriculo-page .resume-certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.curriculo-page .resume-certification-item {
+  background: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.curriculo-page .resume-certification-item h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.curriculo-page .resume-certification-item span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.curriculo-page .resume-certification-description {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.curriculo-page .resume-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.curriculo-page .resume-footer p {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.curriculo-page .resume-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.resume-print-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.resume-print-button-trigger {
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.resume-print-button-trigger:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-print-button-trigger i {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .curriculo-page {
+    padding: 20px 0 60px;
+  }
+
+  .curriculo-page .curriculo-container {
+    margin: 0 16px;
+    padding: 16px;
+  }
+
+  .curriculo-page .resume-header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .curriculo-page .resume-contact-info {
+    min-width: auto;
+  }
+
+  .curriculo-page .resume-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .curriculo-page .resume-certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .curriculo-page .resume-experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .curriculo-page .resume-experience-header h4 {
+    min-width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .curriculo-page .curriculo-container {
+    padding: 15px;
+  }
+
+  .curriculo-page .resume-name-role h1 {
+    font-size: 24px;
+  }
+
+  .curriculo-page .resume-name-role h2 {
+    font-size: 18px;
+  }
+
+  .curriculo-page .resume-specialties {
+    font-size: 14px;
+  }
+
+  .curriculo-page .resume-contact-item {
+    font-size: 12px;
+  }
+
+  .resume-print-button-trigger {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+@media print {
+  .curriculo-page {
+    padding: 0;
+  }
+
+  .curriculo-page .curriculo-container {
+    max-width: none;
+    margin: 0;
+    padding: 15px;
+    box-shadow: none;
+  }
+
+  .resume-print-button {
+    display: none;
+  }
+
+  .curriculo-page section {
+    margin-bottom: 20px;
+  }
+
+  .curriculo-page .resume-experience-item,
+  .curriculo-page .resume-project-item,
+  .curriculo-page .resume-skill-category {
+    page-break-inside: avoid;
+  }
+
+  .curriculo-page .resume-project-item,
+  .curriculo-page .resume-skill-category,
+  .curriculo-page .resume-education-item,
+  .curriculo-page .resume-certification-item {
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+}
+
