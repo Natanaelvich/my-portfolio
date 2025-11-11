@@ -7,11 +7,10 @@ Sitemap: https://www.natanaelsilvalima.dev.br/sitemap.xml
 # Crawl-delay (opcional - para ser respeitoso com o servidor)
 Crawl-delay: 1
 
-# Permitir todas as páginas principais
-Allow: /index.html
-Allow: /curriculo.html
-Allow: /styles.css
-Allow: /script.js
+# Permitir páginas principais
+Allow: /
+Allow: /curriculo
+Allow: /sitemap
 
 # Permitir recursos estáticos
 Allow: /*.css

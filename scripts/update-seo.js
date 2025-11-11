@@ -5,15 +5,17 @@
  * Pode ser executado em CI/CD ou localmente
  */
 
-const { generateSitemapXML, generateSitemapHTML, getCurrentDate } = require('../generate-sitemap.js');
+const { generateSitemapXML, getCurrentDate } = require('../generate-sitemap.js');
 const fs = require('fs');
 const path = require('path');
 
 // Configurações
+const projectRoot = path.join(__dirname, '..');
+const publicDir = path.join(projectRoot, 'public');
 const config = {
     domain: 'https://www.natanaelsilvalima.dev.br',
-    outputDir: './',
-    files: ['sitemap.xml', 'sitemap.html']
+    outputDir: publicDir,
+    files: ['sitemap.xml']
 };
 
 // Função para verificar se os arquivos foram modificados
@@ -45,11 +47,9 @@ function updateSEO() {
         
         // Gerar sitemaps
         const sitemapXML = generateSitemapXML();
-        const sitemapHTML = generateSitemapHTML();
         
         // Escrever arquivos
         fs.writeFileSync(path.join(config.outputDir, 'sitemap.xml'), sitemapXML, 'utf8');
-        fs.writeFileSync(path.join(config.outputDir, 'sitemap.html'), sitemapHTML, 'utf8');
         
         console.log('✅ Arquivos de SEO atualizados com sucesso!');
         
