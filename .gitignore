@@ -4,7 +4,9 @@ node_modules
 dist
 coverage
 .turbo
-.env*
+.env
+.env.local
+.env*.local
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
