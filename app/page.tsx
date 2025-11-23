@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect } from "react";
+import ContactForm from "./components/contact-form";
 
 const navLinks = [
   { href: "#home", label: "Início" },
@@ -651,145 +652,6 @@ export default function HomePage() {
 
     window.addEventListener("scroll", handleUpdateActiveNav, { passive: true });
 
-    const contactForm =
-      document.getElementById("contact-form") as HTMLFormElement | null;
-    const formStatus =
-      document.getElementById("form-status") as HTMLElement | null;
-    const submitBtn =
-      document.getElementById("submit-btn") as HTMLButtonElement | null;
-    const btnLoader = submitBtn?.querySelector(
-      ".btn-loader"
-    ) as HTMLElement | null;
-
-    const setFormLoading = (loading: boolean) => {
-      if (!submitBtn || !btnLoader) return;
-      if (loading) {
-        submitBtn.disabled = true;
-        submitBtn.classList.add("loading");
-        btnLoader.style.display = "flex";
-        submitBtn.style.cursor = "not-allowed";
-      } else {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove("loading");
-        btnLoader.style.display = "none";
-        submitBtn.style.cursor = "pointer";
-      }
-    };
-
-    const showFormStatus = (message: string, type: "success" | "error" | "") => {
-      if (!formStatus) return;
-
-      formStatus.textContent = message;
-      formStatus.className = "form-status";
-
-      if (type === "success") {
-        formStatus.classList.add("success");
-      }
-      if (type === "error") {
-        formStatus.classList.add("error");
-      }
-
-      if (message && type !== "error") {
-        setTimeout(() => {
-          if (!formStatus) return;
-          formStatus.textContent = "";
-          formStatus.className = "form-status";
-        }, 5000);
-      }
-    };
-
-    const handleContactSubmit = async (event: Event) => {
-      event.preventDefault();
-
-      const nameInput = document.getElementById(
-        "name"
-      ) as HTMLInputElement | null;
-      const emailInput = document.getElementById(
-        "email"
-      ) as HTMLInputElement | null;
-      const subjectInput = document.getElementById(
-        "subject"
-      ) as HTMLInputElement | null;
-      const messageInput = document.getElementById(
-        "message"
-      ) as HTMLTextAreaElement | null;
-
-      if (!nameInput || !emailInput || !subjectInput || !messageInput) {
-        return;
-      }
-
-      const formData = {
-        name: nameInput.value.trim(),
-        email: emailInput.value.trim(),
-        subject: subjectInput.value.trim(),
-        message: messageInput.value.trim(),
-      };
-
-      if (
-        !formData.name ||
-        !formData.email ||
-        !formData.subject ||
-        !formData.message
-      ) {
-        showFormStatus("Por favor, preencha todos os campos.", "error");
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        showFormStatus("Por favor, insira um email válido.", "error");
-        return;
-      }
-
-      setFormLoading(true);
-      showFormStatus("", "");
-
-      try {
-        const emailBody = `Olá Natanael,
-
-Meu nome é ${formData.name} e meu email é ${formData.email}.
-
-${formData.message}
-
-Atenciosamente,
-${formData.name}`;
-
-        const mailtoLink = `mailto:taelima1997@gmail.com?cc=${encodeURIComponent(
-          formData.email
-        )}&subject=${encodeURIComponent(
-          formData.subject
-        )}&body=${encodeURIComponent(emailBody)}`;
-
-        const mailtoElement = document.createElement("a");
-        mailtoElement.href = mailtoLink;
-        mailtoElement.style.display = "none";
-        document.body.appendChild(mailtoElement);
-        mailtoElement.click();
-        setTimeout(() => {
-          document.body.removeChild(mailtoElement);
-        }, 100);
-
-        setTimeout(() => {
-          showFormStatus(
-            "Cliente de email aberto! Complete o envio no seu aplicativo de email.",
-            "success"
-          );
-          contactForm?.reset();
-          setFormLoading(false);
-        }, 300);
-      } catch (error) {
-        console.error("Erro ao enviar formulário:", error);
-        showFormStatus(
-          "Erro ao enviar mensagem. Por favor, tente novamente ou envie diretamente para taelima1997@gmail.com",
-          "error"
-        );
-      } finally {
-        setFormLoading(false);
-      }
-    };
-
-    contactForm?.addEventListener("submit", handleContactSubmit);
-
     const heroSection = document.querySelector<HTMLElement>(".hero");
 
     const handleHeroParallax = () => {
@@ -828,7 +690,6 @@ ${formData.name}`;
         button.removeEventListener("click", handleButtonRipple)
       );
       window.removeEventListener("scroll", handleUpdateActiveNav);
-      contactForm?.removeEventListener("submit", handleContactSubmit);
       window.removeEventListener("scroll", handleHeroParallax);
     };
   }, []);
@@ -1139,70 +1000,7 @@ ${formData.name}`;
                   )}
                 </div>
               </div>
-              <div className="contact-form-wrapper">
-                <div className="contact-form-header">
-                  <h3>Envie uma Mensagem</h3>
-                  <p>Preencha o formulário abaixo e entrarei em contato o mais rápido possível.</p>
-                </div>
-                <div className="contact-form">
-                  <form id="contact-form">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Seu Nome"
-                        required
-                        aria-label="Seu nome"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Seu Email"
-                        required
-                        aria-label="Seu email"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        placeholder="Assunto"
-                        required
-                        aria-label="Assunto da mensagem"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Sua Mensagem"
-                        rows={5}
-                        required
-                        aria-label="Sua mensagem"
-                      />
-                    </div>
-                    <div id="form-status" className="form-status" role="alert" aria-live="polite" />
-                    <button type="submit" className="btn-submit" id="submit-btn">
-                      <span className="btn-content">
-                        <span className="btn-icon">
-                          <i className="fas fa-paper-plane" aria-hidden="true" />
-                        </span>
-                        <span className="btn-text">Enviar Mensagem</span>
-                      </span>
-                      <span className="btn-loader" style={{ display: "none" }}>
-                        <i className="fas fa-spinner fa-spin" aria-hidden="true" />
-                        <span>Enviando...</span>
-                      </span>
-                      <span className="btn-ripple" />
-                    </button>
-                  </form>
-                </div>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </section>
