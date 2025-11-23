@@ -30,6 +30,7 @@ export default function ContactForm() {
   }>({ type: "", message: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [isRecaptchaLoaded, setIsRecaptchaLoaded] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   // Carregar script do reCAPTCHA v3
@@ -126,10 +127,6 @@ export default function ContactForm() {
       });
 
       if (result.success) {
-        setStatus({
-          type: "success",
-          message: result.message,
-        });
         // Limpar formulário
         setFormData({
           name: "",
@@ -138,6 +135,8 @@ export default function ContactForm() {
           message: "",
         });
         formRef.current?.reset();
+        // Mostrar modal de sucesso
+        setShowSuccessModal(true);
       } else {
         setStatus({
           type: "error",
@@ -156,101 +155,172 @@ export default function ContactForm() {
     }
   };
 
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+  };
+
+  // Fechar modal ao pressionar ESC
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && showSuccessModal) {
+        closeSuccessModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [showSuccessModal]);
+
+  // Prevenir scroll do body quando modal estiver aberta
+  useEffect(() => {
+    if (showSuccessModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [showSuccessModal]);
+
   return (
-    <div className="contact-form-wrapper">
-      <div className="contact-form-header">
-        <h3>Envie uma Mensagem</h3>
-        <p>
-          Preencha o formulário abaixo e entrarei em contato o mais rápido
-          possível.
-        </p>
-      </div>
-      <div className="contact-form">
-        <form ref={formRef} onSubmit={handleSubmit} id="contact-form">
-          <div className="form-group">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Seu Nome"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              aria-label="Seu nome"
+    <>
+      <div className="contact-form-wrapper">
+        <div className="contact-form-header">
+          <h3>Envie uma Mensagem</h3>
+          <p>
+            Preencha o formulário abaixo e entrarei em contato o mais rápido
+            possível.
+          </p>
+        </div>
+        <div className="contact-form">
+          <form ref={formRef} onSubmit={handleSubmit} id="contact-form">
+            <div className="form-group">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Seu Nome"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                aria-label="Seu nome"
+                disabled={isLoading}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Seu Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                aria-label="Seu email"
+                disabled={isLoading}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Assunto"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                aria-label="Assunto da mensagem"
+                disabled={isLoading}
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Sua Mensagem"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                aria-label="Sua mensagem"
+                disabled={isLoading}
+              />
+            </div>
+            <div
+              id="form-status"
+              className={`form-status ${status.type}`}
+              role="alert"
+              aria-live="polite"
+            >
+              {status.message}
+            </div>
+            <button
+              type="submit"
+              className={`btn-submit ${isLoading ? "loading" : ""}`}
+              id="submit-btn"
               disabled={isLoading}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Seu Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              aria-label="Seu email"
-              disabled={isLoading}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              placeholder="Assunto"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              aria-label="Assunto da mensagem"
-              disabled={isLoading}
-            />
-          </div>
-          <div className="form-group">
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Sua Mensagem"
-              rows={5}
-              value={formData.message}
-              onChange={handleChange}
-              required
-              aria-label="Sua mensagem"
-              disabled={isLoading}
-            />
-          </div>
-          <div
-            id="form-status"
-            className={`form-status ${status.type}`}
-            role="alert"
-            aria-live="polite"
-          >
-            {status.message}
-          </div>
-          <button
-            type="submit"
-            className={`btn-submit ${isLoading ? "loading" : ""}`}
-            id="submit-btn"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <span className="btn-loader" style={{ display: "flex" }}>
-                <i className="fas fa-spinner fa-spin" aria-hidden="true" />
-                <span>Enviando...</span>
-              </span>
-            ) : (
-              <span className="btn-content">
-                <span className="btn-icon">
-                  <i className="fas fa-paper-plane" aria-hidden="true" />
+            >
+              {isLoading ? (
+                <span className="btn-loader" style={{ display: "flex" }}>
+                  <i className="fas fa-spinner fa-spin" aria-hidden="true" />
+                  <span>Enviando...</span>
                 </span>
-                <span className="btn-text">Enviar Mensagem</span>
-              </span>
-            )}
-            <span className="btn-ripple" />
-          </button>
-        </form>
+              ) : (
+                <span className="btn-content">
+                  <span className="btn-icon">
+                    <i className="fas fa-paper-plane" aria-hidden="true" />
+                  </span>
+                  <span className="btn-text">Enviar Mensagem</span>
+                </span>
+              )}
+              <span className="btn-ripple" />
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+
+      {/* Modal de Sucesso */}
+      {showSuccessModal && (
+        <div className="success-modal-overlay" onClick={closeSuccessModal}>
+          <div
+            className="success-modal"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-labelledby="success-modal-title"
+            aria-modal="true"
+          >
+            <button
+              className="success-modal-close"
+              onClick={closeSuccessModal}
+              aria-label="Fechar modal"
+            >
+              <i className="fas fa-times" aria-hidden="true" />
+            </button>
+            <div className="success-modal-content">
+              <div className="success-modal-icon">
+                <div className="success-checkmark-circle">
+                  <i className="fas fa-check" aria-hidden="true" />
+                </div>
+              </div>
+              <h2 id="success-modal-title" className="success-modal-title">
+                Mensagem Enviada!
+              </h2>
+              <p className="success-modal-message">
+                Obrigado pelo contato! Recebi sua mensagem e entrarei em contato
+                o mais rápido possível.
+              </p>
+              <button
+                className="success-modal-button"
+                onClick={closeSuccessModal}
+              >
+                <i className="fas fa-check" aria-hidden="true" />
+                <span>Entendi</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
