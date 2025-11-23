@@ -2,6 +2,44 @@
 
 Este guia explica como configurar variáveis de ambiente, domínios e recursos adicionais no Vercel para o projeto.
 
+## Índice
+
+- [Pré-requisitos](#pré-requisitos)
+- [Passo a Passo](#passo-a-passo)
+  - [1. Acessar o Dashboard do Projeto](#1-acessar-o-dashboard-do-projeto)
+  - [2. Configurar Variáveis de Ambiente](#2-configurar-variáveis-de-ambiente)
+    - [2.1. Acessar Environment Variables](#21-acessar-environment-variables)
+    - [2.2. Adicionar Variáveis do n8n](#22-adicionar-variáveis-do-n8n)
+    - [2.3. Adicionar Variáveis do reCAPTCHA](#23-adicionar-variáveis-do-recaptcha)
+    - [2.4. Adicionar Variáveis de Rate Limiting (Opcional)](#24-adicionar-variáveis-de-rate-limiting-opcional)
+  - [3. Verificar Variáveis Configuradas](#3-verificar-variáveis-configuradas)
+  - [4. Fazer Redeploy (Importante)](#4-fazer-redeploy-importante)
+  - [5. Configurar Domínio (Se Ainda Não Configurado)](#5-configurar-domínio-se-ainda-não-configurado)
+  - [6. Configurar Build Settings (Se Necessário)](#6-configurar-build-settings-se-necessário)
+  - [7. Configurar Environment-Specific Variables (Opcional)](#7-configurar-environment-specific-variables-opcional)
+  - [8. Usar Vercel KV para Rate Limiting Persistente (Opcional)](#8-usar-vercel-kv-para-rate-limiting-persistente-opcional)
+    - [8.1. Criar Vercel KV Database](#81-criar-vercel-kv-database)
+    - [8.2. Obter Credenciais](#82-obter-credenciais)
+    - [8.3. Atualizar Código (Futuro)](#83-atualizar-código-futuro)
+  - [9. Configurar Logs e Monitoramento](#9-configurar-logs-e-monitoramento)
+    - [9.1. Ver Logs em Tempo Real](#91-ver-logs-em-tempo-real)
+    - [9.2. Configurar Alertas (Opcional)](#92-configurar-alertas-opcional)
+  - [10. Testar a Configuração](#10-testar-a-configuração)
+    - [10.1. Testar em Preview](#101-testar-em-preview)
+    - [10.2. Testar em Produção](#102-testar-em-produção)
+  - [11. Verificar Headers e IPs](#11-verificar-headers-e-ips)
+- [Troubleshooting](#troubleshooting)
+  - [Variáveis não funcionam](#variáveis-não-funcionam)
+  - [Erro: "N8N_WEBHOOK_URL não configurada"](#erro-n8n_webhook_url-não-configurada)
+  - [Erro: "reCAPTCHA site key is missing"](#erro-recaptcha-site-key-is-missing)
+  - [Formulário não funciona em produção](#formulário-não-funciona-em-produção)
+  - [Rate limiting muito restritivo](#rate-limiting-muito-restritivo)
+- [Boas Práticas](#boas-práticas)
+- [Checklist de Configuração](#checklist-de-configuração)
+- [Próximos Passos](#próximos-passos)
+- [Recursos Adicionais](#recursos-adicionais)
+- [Suporte](#suporte)
+
 ## Pré-requisitos
 
 - Conta no Vercel: https://vercel.com/signup

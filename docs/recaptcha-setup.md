@@ -2,6 +2,36 @@
 
 Este guia explica como configurar o Google reCAPTCHA v3 para proteger o formulário de contato contra spam e bots.
 
+## Índice
+
+- [O que é reCAPTCHA v3?](#o-que-é-recaptcha-v3)
+- [Pré-requisitos](#pré-requisitos)
+- [Passo a Passo](#passo-a-passo)
+  - [1. Acessar o Google reCAPTCHA Admin Console](#1-acessar-o-google-recaptcha-admin-console)
+  - [2. Registrar um Novo Site](#2-registrar-um-novo-site)
+  - [3. Obter as Chaves](#3-obter-as-chaves)
+  - [4. Configurar no Projeto](#4-configurar-no-projeto)
+    - [4.1. Variáveis de Ambiente Locais](#41-variáveis-de-ambiente-locais)
+    - [4.2. Variáveis de Ambiente no Vercel](#42-variáveis-de-ambiente-no-vercel)
+  - [5. Configurações Avançadas (Opcional)](#5-configurações-avançadas-opcional)
+    - [5.1. Ajustar Score Mínimo](#51-ajustar-score-mínimo)
+    - [5.2. Configurar Ações](#52-configurar-ações)
+  - [6. Testar a Configuração](#6-testar-a-configuração)
+    - [6.1. Teste Local](#61-teste-local)
+    - [6.2. Verificar Logs](#62-verificar-logs)
+  - [7. Monitoramento](#7-monitoramento)
+    - [7.1. Dashboard do reCAPTCHA](#71-dashboard-do-recaptcha)
+    - [7.2. Ajustar Thresholds](#72-ajustar-thresholds)
+- [Troubleshooting](#troubleshooting)
+  - [Erro: "reCAPTCHA site key is missing"](#erro-recaptcha-site-key-is-missing)
+  - [Erro: "reCAPTCHA secret key is missing"](#erro-recaptcha-secret-key-is-missing)
+  - [Score muito baixo](#score-muito-baixo)
+  - [reCAPTCHA não carrega](#recaptcha-não-carrega)
+  - [Erro: "Invalid site key"](#erro-invalid-site-key)
+- [Boas Práticas](#boas-práticas)
+- [Próximos Passos](#próximos-passos)
+- [Recursos Adicionais](#recursos-adicionais)
+
 ## O que é reCAPTCHA v3?
 
 O reCAPTCHA v3 é uma solução de segurança invisível que analisa o comportamento do usuário e atribui um score de 0.0 a 1.0, onde:

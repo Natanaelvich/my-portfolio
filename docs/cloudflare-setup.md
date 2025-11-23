@@ -2,6 +2,44 @@
 
 Este guia explica como configurar o Cloudflare para proteger seu site contra DDoS, configurar DNS e implementar rate limiting adicional.
 
+## Índice
+
+- [O que é Cloudflare?](#o-que-é-cloudflare)
+- [Pré-requisitos](#pré-requisitos)
+- [Passo a Passo](#passo-a-passo)
+  - [1. Adicionar Site ao Cloudflare](#1-adicionar-site-ao-cloudflare)
+  - [2. Verificar Registros DNS](#2-verificar-registros-dns)
+  - [3. Atualizar Nameservers](#3-atualizar-nameservers)
+  - [4. Configurar DNS no Cloudflare](#4-configurar-dns-no-cloudflare)
+  - [5. Configurar SSL/TLS](#5-configurar-ssltls)
+  - [6. Ativar Proteção DDoS](#6-ativar-proteção-ddos)
+  - [7. Configurar WAF (Web Application Firewall)](#7-configurar-waf-web-application-firewall)
+  - [8. Configurar Rate Limiting](#8-configurar-rate-limiting)
+  - [9. Configurar Page Rules (Opcional)](#9-configurar-page-rules-opcional)
+  - [10. Configurar Firewall Rules (Opcional)](#10-configurar-firewall-rules-opcional)
+  - [11. Verificar Configuração](#11-verificar-configuração)
+- [Configurações Recomendadas para Produção](#configurações-recomendadas-para-produção)
+  - [Security Settings](#security-settings)
+  - [Speed Settings](#speed-settings)
+  - [Caching](#caching)
+- [Monitoramento e Analytics](#monitoramento-e-analytics)
+  - [1. Analytics](#1-analytics)
+  - [2. Logs (Planos Pagos)](#2-logs-planos-pagos)
+- [Troubleshooting](#troubleshooting)
+  - [Site não carrega após configurar Cloudflare](#site-não-carrega-após-configurar-cloudflare)
+  - [Erro 1016: Origin DNS Error](#erro-1016-origin-dns-error)
+  - [Formulário não funciona](#formulário-não-funciona)
+  - [SSL não funciona](#ssl-não-funciona)
+- [Integração com Vercel](#integração-com-vercel)
+  - [Configurar no Vercel](#configurar-no-vercel)
+  - [Headers Importantes](#headers-importantes)
+- [Boas Práticas](#boas-práticas)
+- [Próximos Passos](#próximos-passos)
+- [Recursos Adicionais](#recursos-adicionais)
+- [Planos e Limitações](#planos-e-limitações)
+  - [Free Plan](#free-plan)
+  - [Pro Plan ($20/mês)](#pro-plan-20mês)
+
 ## O que é Cloudflare?
 
 O Cloudflare é uma plataforma que oferece:
