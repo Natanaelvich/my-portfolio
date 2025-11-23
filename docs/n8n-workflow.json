@@ -1,0 +1,122 @@
+{
+  "name": "Portfolio Contact Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact-form",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-contact-form",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "contact-form"
+    },
+    {
+      "parameters": {
+        "fromEmail": "contato@solunorde.com.br",
+        "toEmail": "taelima1997@gmail.com",
+        "subject": "Nova mensagem do portfólio: {{ $json.body.subject }}",
+        "emailType": "html",
+        "message": "<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <style>\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }\n    .container { max-width: 600px; margin: 0 auto; background: #ffffff; }\n    .header { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 20px; text-align: center; }\n    .header h2 { margin: 0; font-size: 24px; }\n    .content { padding: 30px; background: #f9fafb; }\n    .field { margin-bottom: 20px; }\n    .label { font-weight: bold; color: #1e3a8a; margin-bottom: 8px; display: block; font-size: 14px; }\n    .value { color: #374151; font-size: 15px; }\n    .message-box { background: white; padding: 20px; border-left: 4px solid #1e3a8a; margin: 15px 0; border-radius: 4px; white-space: pre-wrap; }\n    .footer { background: #f3f4f6; padding: 15px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }\n    .meta-info { margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }\n    .meta-info div { margin-bottom: 5px; }\n    a { color: #1e40af; text-decoration: none; }\n    a:hover { text-decoration: underline; }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h2>Nova Mensagem do Portfólio</h2>\n    </div>\n    <div class=\"content\">\n      <div class=\"field\">\n        <span class=\"label\">Nome:</span>\n        <span class=\"value\">{{ $json.body.name }}</span>\n      </div>\n      <div class=\"field\">\n        <span class=\"label\">Email:</span>\n        <span class=\"value\"><a href=\"mailto:{{ $json.body.email }}\">{{ $json.body.email }}</a></span>\n      </div>\n      <div class=\"field\">\n        <span class=\"label\">Assunto:</span>\n        <span class=\"value\">{{ $json.body.subject }}</span>\n      </div>\n      <div class=\"field\">\n        <span class=\"label\">Mensagem:</span>\n        <div class=\"message-box\">{{ $json.body.message }}</div>\n      </div>\n      <div class=\"meta-info\">\n        <div><strong>Enviado em:</strong> {{ $json.body.timestamp }}</div>\n        <div><strong>IP do remetente:</strong> {{ $json.body.ip }}</div>\n      </div>\n    </div>\n    <div class=\"footer\">\n      <p style=\"margin: 0;\">Esta mensagem foi enviada através do formulário de contato do portfólio.</p>\n    </div>\n  </div>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "send-email-notification",
+      "name": "Send Email - Notificação",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        450,
+        250
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "contato@solunorde.com.br",
+        "toEmail": "={{ $json.body.email }}",
+        "subject": "Recebemos sua mensagem!",
+        "emailType": "html",
+        "message": "<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <style>\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f9fafb; }\n    .container { max-width: 600px; margin: 0 auto; background: #ffffff; }\n    .header { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 30px 20px; text-align: center; }\n    .header h1 { margin: 0; font-size: 28px; font-weight: 600; }\n    .content { padding: 40px 30px; }\n    .greeting { font-size: 18px; color: #1e3a8a; margin-bottom: 20px; font-weight: 600; }\n    .message { font-size: 16px; color: #374151; line-height: 1.8; margin-bottom: 25px; }\n    .highlight-box { background: #eff6ff; border-left: 4px solid #1e40af; padding: 20px; margin: 25px 0; border-radius: 4px; }\n    .highlight-box p { margin: 0; color: #1e40af; font-weight: 500; }\n    .footer { background: #f3f4f6; padding: 25px; text-align: center; font-size: 14px; color: #6b7280; border-top: 1px solid #e5e7eb; }\n    .footer p { margin: 5px 0; }\n    .signature { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; }\n    .signature p { margin: 5px 0; color: #374151; }\n    .signature strong { color: #1e3a8a; }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"header\">\n      <h1>Mensagem Recebida!</h1>\n    </div>\n    <div class=\"content\">\n      <div class=\"greeting\">Olá {{ $json.body.name }},</div>\n      <div class=\"message\">\n        <p>Recebemos sua mensagem através do formulário de contato do meu portfólio e gostaria de agradecer pelo seu interesse em entrar em contato.</p>\n        <p>Estou revisando sua mensagem e retornarei o mais breve possível, geralmente em até 24 horas.</p>\n      </div>\n      <div class=\"highlight-box\">\n        <p>✓ Sua mensagem foi recebida com sucesso!</p>\n      </div>\n      <div class=\"signature\">\n        <p><strong>Assunto da sua mensagem:</strong></p>\n        <p>{{ $json.body.subject }}</p>\n        <p style=\"margin-top: 20px;\"><strong>Atenciosamente,</strong></p>\n        <p><strong>Natanael Silva Lima</strong></p>\n        <p>Tech Lead & Desenvolvedor Fullstack</p>\n      </div>\n    </div>\n    <div class=\"footer\">\n      <p><strong>Esta é uma mensagem automática de confirmação.</strong></p>\n      <p>Por favor, não responda este email. Para entrar em contato, use o formulário em meu portfólio.</p>\n    </div>\n  </div>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "send-email-confirmation",
+      "name": "Send Email - Confirmação",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        450,
+        350
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"success\": true, \"message\": \"Email enviado com sucesso\" } }}",
+        "options": {}
+      },
+      "id": "respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Email - Notificação",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email - Confirmação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email - Notificação": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email - Confirmação": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-15T00:00:00.000Z",
+  "versionId": "1"
+}
