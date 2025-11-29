@@ -554,7 +554,7 @@ export default function HomePage() {
     scrollTopBtn.style.cssText = `
       position: fixed;
       bottom: 30px;
-      right: 30px;
+      left: 30px;
       width: 50px;
       height: 50px;
       background: var(--primary-color);
@@ -565,7 +565,7 @@ export default function HomePage() {
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
-      z-index: 1000;
+      z-index: 100;
       box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
     `;
 
