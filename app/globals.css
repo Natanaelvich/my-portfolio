@@ -988,6 +988,13 @@ body {
   transform: translateY(-2px);
 }
 
+/* Esconder badge do reCAPTCHA v3 */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .footer {
   background: var(--bg-dark);
   color: white;
@@ -1090,7 +1097,7 @@ body {
   }
 
   .hero-image {
-    order: -1;
+    order: 1;
   }
 
   .about-content {
@@ -1166,7 +1173,7 @@ body {
   }
 
   .tech-stack {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .about-stats {
