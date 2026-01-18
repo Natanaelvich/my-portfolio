@@ -8,6 +8,7 @@ interface ExperienceItem {
   company: string;
   period: string;
   bullets: string[];
+  techStack?: string;
 }
 
 interface SkillCategory {
@@ -29,12 +30,6 @@ interface EducationItem {
   description: string;
 }
 
-interface CertificationItem {
-  title: string;
-  provider: string;
-  description: string;
-}
-
 export const metadata: Metadata = {
   title:
     "Natanael Silva Lima - Currículo Profissional | Tech Lead & Desenvolvedor Fullstack",
@@ -52,77 +47,125 @@ const contactItems = [
   { icon: "fas fa-map-marker-alt", value: "Timbiras, MA • Remoto" },
 ];
 
-const professionalSummary = `Tech Lead e Desenvolvedor Fullstack com mais de 7 anos de experiência em desenvolvimento de software,
-especializado em React, React Native e Node.js. Liderança técnica em equipes de desenvolvimento, implementação de arquiteturas escaláveis
-e desenvolvimento de aplicações mobile-first que atendem milhões de usuários. Experiência em monitoramento de sistemas, CI/CD e integração
-com serviços em nuvem.`;
+const professionalSummary = `Tech Lead e Desenvolvedor Fullstack com mais de 7 anos de experiência em construção e liderança de sistemas web e mobile em escala.
+Atuação forte em definição de arquitetura, tomada de decisões técnicas, CI/CD, observabilidade e integração com cloud.
+Experiência liderando times e entregando produtos críticos com milhões de usuários, utilizando Node.js, React, React Native e soluções baseadas em IA.`;
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Desenvolvedor Fullstack & Tech Lead",
+    title: "Senior Full Stack Engineer & Tech Lead",
     company: "Grupo Abril",
     period: "Out 2023 - Presente",
     bullets: [
-      "Liderança técnica no desenvolvimento de aplicativos, sites e serviços que atendem milhões de usuários",
-      "Implementação de monitoramento ativo e tomada de decisão em tempo real, garantindo alta disponibilidade",
-      "Deploy automatizado para App Store e Google Play com integração de testes E2E em pipelines CI/CD",
-      "Desenvolvimento de Cloud Functions na Google Cloud e AI Agents para otimização de fluxos internos",
-      "Stack: React Native, Node.js, Google Cloud, AI Agents",
+      "Liderança técnica no desenvolvimento de aplicativos e serviços com base instalada de milhões de usuários, definindo arquitetura, padrões de código e pipelines de entrega contínua",
+      "Implementação de monitoramento ativo e alertas em produção, reduzindo tempo de resposta a incidentes e aumentando a confiabilidade dos sistemas",
+      "Deploy automatizado para App Store e Google Play com integração de testes E2E em pipelines CI/CD, garantindo qualidade e agilidade nas entregas",
+      "Desenvolvimento de Cloud Functions e AI Agents para otimização de fluxos internos, aumentando eficiência operacional e reduzindo custos de infraestrutura",
     ],
+    techStack: "React Native, Node.js, Google Cloud, AI Agents",
   },
   {
-    title: "Senior Software Engineer",
+    title: "Senior Full Stack Engineer & Tech Lead",
     company: "COAMO Agroindustrial Cooperativa",
     period: "Jul 2022 - Out 2023",
     bullets: [
-      "Desenvolvimento de aplicativos mobile e sistemas web para o setor agroindustrial",
-      "Integração com Azure (Functions, Filas, Bancos de Dados e Repositórios)",
-      "Criação de pipelines CI/CD no Azure DevOps com deploy automatizado",
-      "Monitoramento ativo e resposta a eventos em produção",
-      "Mentoria de desenvolvedores juniores e estagiários",
-      "Stack: React Native, Node.js, React.js, Azure, SQL Databases",
+      "Liderança técnica no desenvolvimento de aplicativos mobile e sistemas web para o setor agroindustrial, atendendo milhares de usuários em operações críticas",
+      "Arquitetura e implementação de integração com Azure (Functions, Filas, Bancos de Dados e Repositórios), garantindo escalabilidade e confiabilidade",
+      "Criação de pipelines CI/CD no Azure DevOps com deploy automatizado, reduzindo tempo de entrega e aumentando a qualidade do código",
+      "Monitoramento ativo e resposta a eventos em produção, mantendo alta disponibilidade e desempenho dos sistemas",
+      "Mentoria de desenvolvedores juniores e estagiários, contribuindo para o crescimento técnico da equipe",
     ],
+    techStack: "React Native, Node.js, React.js, Azure, SQL Databases",
   },
   {
-    title: "Frontend Developer React Native",
-    company: "Control Tracker (Freelancer)",
-    period: "Nov 2020 - Jul 2023",
-    bullets: [
-      "Desenvolvimento de aplicativos de rastreamento e gerenciamento de veículos",
-      "Implementação de geolocalização em tempo real, mapas interativos e notificações push",
-      "Deploy automatizado para App Store e Google Play",
-      "Integração com serviços em nuvem e APIs externas",
-      "Stack: React Native, APIs REST, Push Notifications, Mapas, Geolocalização",
-    ],
-  },
-  {
-    title: "Tech Lead Frontend",
+    title: "Senior Full Stack Engineer & Tech Lead",
     company: "BNE - Banco Nacional de Empregos",
     period: "Abr 2021 - Mar 2023",
     bullets: [
-      "Atuação como Tech Lead, definindo arquitetura front-end e mentoria de desenvolvedores",
-      "Desenvolvimento do zero de plataforma web e mobile para coleta e gestão de documentos",
-      "Implantação bem-sucedida com adoção gradual por novos clientes",
-      "Uso de Azure Repositories e pipelines de CI/CD para versionamento e automação",
-      "Implementação de testes unitários, de integração e E2E",
-      "Stack: ReactJS, React Native, Node.js, Azure Repos, CI/CD",
+      "Atuação como Tech Lead, definindo arquitetura front-end e mentoria de desenvolvedores, estabelecendo padrões técnicos e cultura de qualidade",
+      "Desenvolvimento do zero de plataforma web e mobile para coleta e gestão de documentos, entregando solução completa desde a concepção até a produção",
+      "Implantação bem-sucedida com adoção gradual por novos clientes, demonstrando escalabilidade e valor de negócio",
+      "Uso de Azure Repositories e pipelines de CI/CD para versionamento e automação, reduzindo erros manuais e aumentando produtividade",
+      "Implementação de testes unitários, de integração e E2E, garantindo qualidade e confiabilidade do código em produção",
     ],
+    techStack: "ReactJS, React Native, Node.js, Azure Repos, CI/CD",
   },
   {
     title: "Full Stack Developer",
     company: "Ideia Soluções em Sistemas",
     period: "Jun 2020 - Fev 2022",
     bullets: [
-      "Desenvolvimento de aplicativos mobile e sistemas web para o setor imobiliário",
-      "Criação de portais imobiliários, dashboards administrativos e aplicativos mobile",
-      "Participação em decisões técnicas e melhorias de arquitetura",
-      "Implementação de boas práticas de código, versionamento e automação",
-      "Stack: ReactJS, React Native, PHP, APIs REST, MySQL, Git",
+      "Desenvolvimento de aplicativos mobile e sistemas web para o setor imobiliário, atendendo necessidades específicas do mercado",
+      "Criação de portais imobiliários, dashboards administrativos e aplicativos mobile, oferecendo soluções completas para clientes",
+      "Participação em decisões técnicas e melhorias de arquitetura, contribuindo para a evolução e qualidade dos sistemas",
+      "Implementação de boas práticas de código, versionamento e automação, estabelecendo base sólida para crescimento técnico",
     ],
+    techStack: "ReactJS, React Native, PHP, APIs REST, MySQL, Git",
+  },
+];
+
+const freelancerProjects: ExperienceItem[] = [
+  {
+    title: "Desenvolvedor React Native (Freelancer)",
+    company: "Control Tracker",
+    period: "Nov 2020 - Jul 2023",
+    bullets: [
+      "Desenvolvimento de aplicativos de rastreamento e gerenciamento de veículos, solucionando necessidades críticas de monitoramento em tempo real",
+      "Implementação de geolocalização em tempo real, mapas interativos e notificações push, melhorando a experiência do usuário e eficiência operacional",
+      "Deploy automatizado para App Store e Google Play, garantindo atualizações frequentes e consistentes",
+      "Integração com serviços em nuvem e APIs externas, ampliando funcionalidades e escalabilidade da solução",
+    ],
+    techStack: "React Native, APIs REST, Push Notifications, Mapas, Geolocalização",
+  },
+  {
+    title: "Desenvolvedor React Native (Freelancer)",
+    company: "Agroadb",
+    period: "2021 - 2022",
+    bullets: [
+      "Desenvolvimento de aplicativo mobile para mapeamento de grandes fazendas e plantações, permitindo gestão precisa de áreas agrícolas extensas",
+      "Implementação de mapas interativos e georreferenciamento avançado para visualização e análise de terrenos agrícolas em larga escala",
+      "Arquitetura de solução para processamento e renderização de grandes volumes de dados geográficos, garantindo performance em dispositivos móveis",
+      "Integração com APIs de mapeamento e serviços de geolocalização, oferecendo funcionalidades avançadas para planejamento agrícola",
+    ],
+    techStack: "React Native, Mapas, Geolocalização, APIs REST, Processamento de Dados Geográficos",
+  },
+  {
+    title: "Desenvolvedor React Native (Freelancer)",
+    company: "Mundo Tech",
+    period: "2022 - 2023",
+    bullets: [
+      "Desenvolvimento de aplicativo de controle de estoque offline-first, permitindo operação mesmo sem conectividade e sincronização automática quando online",
+      "Arquitetura de solução para gerenciamento de grande volume de produtos, listas extensas e filtros complexos, garantindo performance e usabilidade",
+      "Implementação de formulários robustos e validações avançadas, garantindo integridade de dados e experiência do usuário otimizada",
+      "Otimização de desempenho para manipulação de grandes datasets localmente, utilizando estratégias de cache e indexação eficiente",
+    ],
+    techStack: "React Native, Offline-first, SQLite, Gerenciamento de Estado, Sincronização de Dados",
   },
 ];
 
 const skillCategories: SkillCategory[] = [
+  {
+    title: "Backend & Arquitetura",
+    skills: [
+      "Node.js & Express.js",
+      "NestJS",
+      "PostgreSQL",
+      "REST APIs",
+      "Microserviços",
+      "Arquitetura de Sistemas",
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: [
+      "Google Cloud Platform",
+      "Azure (Functions, DevOps)",
+      "GitHub Actions",
+      "CI/CD Pipelines",
+      "Docker",
+      "Observabilidade",
+    ],
+  },
   {
     title: "Frontend",
     skills: [
@@ -134,16 +177,6 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Backend",
-    skills: [
-      "Node.js & Express.js",
-      "NestJS",
-      "PostgreSQL",
-      "REST APIs",
-      "Microserviços",
-    ],
-  },
-  {
     title: "Mobile",
     skills: [
       "React Native",
@@ -151,16 +184,6 @@ const skillCategories: SkillCategory[] = [
       "Push Notifications",
       "Mapas Interativos",
       "Fastlane (CI/CD)",
-    ],
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: [
-      "Google Cloud Platform",
-      "Azure (Functions, DevOps)",
-      "GitHub Actions",
-      "CI/CD Pipelines",
-      "Docker",
     ],
   },
   {
@@ -176,33 +199,6 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Ferramentas & Metodologias",
     skills: ["Git & GitHub", "JIRA", "Scrum", "Testes (Jest, Cypress)", "Clean Code"],
-  },
-];
-
-const professionalProjects: ProjectItem[] = [
-  {
-    title: "APPS Grupo Abril",
-    description:
-      "Aplicativos mobile e serviços que atendem milhões de usuários com monitoramento ativo e alta disponibilidade.",
-    techStack: "React Native • Node.js • Google Cloud • AI Agents",
-  },
-  {
-    title: "APP Coamo Frete",
-    description:
-      "Sistema de gerenciamento de frotas para o setor agroindustrial com integração Azure e monitoramento em tempo real.",
-    techStack: "React Native • Azure Functions • SQL Database • CI/CD",
-  },
-  {
-    title: "APPS CTracker",
-    description:
-      "Aplicativo de rastreamento de veículos com geolocalização em tempo real e mapas interativos.",
-    techStack: "React Native • Geolocalização • Push Notifications • APIs REST",
-  },
-  {
-    title: "App Floox",
-    description:
-      "Plataforma web e mobile para coleta e gestão de documentos, solucionando dor crítica interna do BNE.",
-    techStack: "ReactJS • React Native • Azure Repos • CI/CD",
   },
 ];
 
@@ -235,16 +231,6 @@ const personalProjects: ProjectItem[] = [
     techStack: "React Native • Busca Local • Avaliações • Conexão",
     link: { href: "https://www.servicolocalapp.com.br/", label: "Visitar Site" },
   },
-  {
-    title: "Contali",
-    description:
-      "Contabilidade eficiente pelo WhatsApp. Facilite a gestão contábil da sua empresa com suporte exclusivo via WhatsApp.",
-    techStack: "Website • WhatsApp • Contabilidade • Gestão Fiscal",
-    link: {
-      href: "https://www.contaliservicoscontabeis.com.br/",
-      label: "Visitar Site",
-    },
-  },
 ];
 
 const education: EducationItem[] = [
@@ -252,40 +238,7 @@ const education: EducationItem[] = [
     title: "Análise e Desenvolvimento de Sistemas",
     institution: "UniFacema",
     period: "2019 - 2021",
-    description: "Foco em Desenvolvimento de Aplicativos Móveis",
-  },
-];
-
-const certifications: CertificationItem[] = [
-  {
-    title: "Agents de IA com Python e LangChain",
-    provider: "Asimov Academy • 2025",
-    description: "Node.js • TypeScript • Inteligência Artificial",
-  },
-  {
-    title: "Fundamentos do Node.js",
-    provider: "Rocketseat • 2024",
-    description: "Node.js • Streams • HTTP • APIs",
-  },
-  {
-    title: "ReactJS",
-    provider: "Rocketseat • 2024",
-    description: "React.js • HTML5 • CSS • Boas Práticas",
-  },
-  {
-    title: "Pipelines CI/CD com GitHub Actions",
-    provider: "Rocketseat • 2024",
-    description: "GitHub Actions • CI/CD • Automação",
-  },
-  {
-    title: "IA para Devs",
-    provider: "Rocketseat • 2025",
-    description: "Inteligência Artificial • Desenvolvimento de Chatbots",
-  },
-  {
-    title: "Clean Code",
-    provider: "Rocketseat • 2024",
-    description: "Design de Sistemas • Arquitetura • Boas Práticas",
+    description: "Formação em análise, projeto, desenvolvimento e manutenção de sistemas de informação, com base em técnicas de programação, banco de dados, arquitetura de software e engenharia de software.",
   },
 ];
 
@@ -314,13 +267,13 @@ export default function CurriculoPage() {
         </header>
 
         <section className="resume-summary">
-          <h3>Resumo Executivo</h3>
+          <h3>Resumo Profissional</h3>
           <p>{professionalSummary}</p>
         </section>
 
         <section className="resume-experience">
           <h3>Experiência Profissional</h3>
-          {experiences.map(({ title, company, period, bullets }) => (
+          {experiences.map(({ title, company, period, bullets, techStack }) => (
             <div className="resume-experience-item" key={`${title}-${company}`}>
               <div className="resume-experience-header">
                 <h4>{title}</h4>
@@ -332,6 +285,34 @@ export default function CurriculoPage() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              {techStack && (
+                <p className="resume-tech-stack" style={{ marginTop: "0.75rem", fontWeight: 500 }}>
+                  <strong>Tecnologias:</strong> {techStack}
+                </p>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section className="resume-experience">
+          <h3>Projetos Freelancer de Relevância</h3>
+          {freelancerProjects.map(({ title, company, period, bullets, techStack }) => (
+            <div className="resume-experience-item" key={`${title}-${company}`}>
+              <div className="resume-experience-header">
+                <h4>{title}</h4>
+                <span className="resume-company">{company}</span>
+                <span className="resume-period">{period}</span>
+              </div>
+              <ul>
+                {bullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              {techStack && (
+                <p className="resume-tech-stack" style={{ marginTop: "0.75rem", fontWeight: 500 }}>
+                  <strong>Tecnologias:</strong> {techStack}
+                </p>
+              )}
             </div>
           ))}
         </section>
@@ -350,17 +331,6 @@ export default function CurriculoPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="resume-projects">
-          <h3>Projetos Profissionais</h3>
-          {professionalProjects.map(({ title, description, techStack }) => (
-            <div className="resume-project-item" key={title}>
-              <h4>{title}</h4>
-              <p>{description}</p>
-              <span className="resume-tech-stack">{techStack}</span>
-            </div>
-          ))}
         </section>
 
         <section className="resume-personal-projects">
@@ -393,26 +363,12 @@ export default function CurriculoPage() {
           ))}
         </section>
 
-        <section className="resume-certifications">
-          <h3>Certificações &amp; Cursos</h3>
-          <div className="resume-certifications-grid">
-            {certifications.map(({ title, provider, description }) => (
-              <div className="resume-certification-item" key={title}>
-                <h4>{title}</h4>
-                <span>{provider}</span>
-                <p className="resume-certification-description">{description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <footer className="resume-footer">
           <p>
             Portfólio online:{" "}
             <a href="https://natanaelsilvalima.dev.br" target="_blank" rel="noopener noreferrer">
               natanaelsilvalima.dev.br
-            </a>{" "}
-            | Última atualização: Agosto 2025
+            </a>
           </p>
         </footer>
       </div>
