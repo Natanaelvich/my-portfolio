@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import ContactForm from "./components/contact-form";
 
 const navLinks = [
@@ -11,6 +12,7 @@ const navLinks = [
   { href: "#skills", label: "Habilidades" },
   { href: "#projects", label: "Projetos" },
   { href: "#contact", label: "Contato" },
+  { href: "/curriculo", label: "Currículo" },
 ];
 
 const heroTechStack = [
@@ -554,7 +556,8 @@ export default function HomePage() {
     scrollTopBtn.style.cssText = `
       position: fixed;
       bottom: 30px;
-      left: 30px;
+      right: 30px;
+      left: auto;
       width: 50px;
       height: 50px;
       background: var(--primary-color);
@@ -701,11 +704,16 @@ export default function HomePage() {
       </a>
       <header className="header">
         <nav className="nav">
-          <div className="nav-brand">
-            <h1>
-              <i className="fas fa-code" aria-hidden="true" /> Natanael Lima
-            </h1>
-          </div>
+          <a href="/" className="nav-brand">
+            <Image
+              src="/profile-photo.jpeg"
+              alt="Natanael Lima"
+              width={44}
+              height={44}
+              className="nav-brand-avatar"
+            />
+            <h1 className="nav-brand-name">Natanael Lima</h1>
+          </a>
           <ul className="nav-menu">
             {navLinks.map(({ href, label }) => (
               <li key={href}>

@@ -95,34 +95,46 @@ body {
   padding: 1.25rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 2rem;
 }
 
-.nav-brand h1 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  letter-spacing: -0.025em;
-  transition: all 0.3s ease;
+.nav-brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
 }
 
-.nav-brand h1 i {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  animation: pulse 2s infinite;
-}
-
-.nav-brand h1:hover {
+.nav-brand:hover {
   transform: scale(1.02);
   filter: brightness(1.05);
 }
 
-.nav-brand h1:hover i {
-  animation: bounce 0.6s ease;
-  filter: brightness(1.2);
+.nav-brand-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-brand:hover .nav-brand-avatar {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.nav-brand-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: -0.025em;
+  margin: 0;
+  white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
 .nav-menu {
@@ -188,6 +200,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-menu .btn-cv:hover {
@@ -998,7 +1012,8 @@ body {
 .footer {
   background: var(--bg-dark);
   color: white;
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 90px 0;
+  padding-right: 90px;
 }
 
 .footer-content {
@@ -1077,53 +1092,9 @@ body {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1776px) {
   .nav {
     padding: 1rem 1.5rem;
-  }
-
-  .nav-menu {
-    gap: 1.5rem;
-  }
-
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 3rem;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-image {
-    order: 1;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    padding: 0.75rem 0;
-  }
-
-  .nav {
-    padding: 0.75rem 1rem;
   }
 
   .nav-menu {
@@ -1162,6 +1133,48 @@ body {
 
   .nav-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    order: 1;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 0;
+  }
+
+  .nav {
+    padding: 0.75rem 1rem;
   }
 
   .hero {
@@ -1217,7 +1230,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .nav-brand h1 {
+  .nav-brand-name {
     font-size: 1.4rem;
   }
 
