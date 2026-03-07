@@ -24,7 +24,6 @@ Allow: /*.ico
 
 # Bloquear arquivos desnecessários
 Disallow: /README.md
-Disallow: /Natanael Silva Lima.md
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /node_modules/
