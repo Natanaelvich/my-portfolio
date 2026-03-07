@@ -71,11 +71,15 @@ function validateFormData(data: EmailFormData): {
 
 /**
  * Sanitiza o conteúdo do formulário
+ * Remove caracteres perigosos para injeção HTML, XSS e quebras de contexto
  */
 function sanitizeInput(input: string): string {
   return input
     .trim()
-    .replace(/[<>]/g, "") // Remover tags HTML básicas
+    .replace(/[<>]/g, "") // Remover tags HTML
+    .replace(/javascript:/gi, "") // Remover protocolo javascript (XSS)
+    .replace(/data:/gi, "") // Remover protocolo data (possível XSS)
+    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "") // Remover caracteres de controle
     .substring(0, 5000); // Limitar tamanho máximo
 }
 

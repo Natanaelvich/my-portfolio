@@ -1,6 +1,10 @@
 /**
  * Rate Limiting Utility
  * Limita o número de requisições por IP em um período de tempo
+ *
+ * NOTA: Em ambiente serverless (Vercel), o store em memória é isolado por instância.
+ * Para rate limit efetivo em produção, considere usar Vercel KV ou Redis para persistência.
+ * @see https://vercel.com/docs/storage/vercel-kv
  */
 
 interface RateLimitEntry {
@@ -86,15 +90,15 @@ function cleanupExpiredEntries(now: number): void {
 
 /**
  * Obtém o IP do cliente a partir dos headers da requisição
+ * Prioriza headers confiáveis do Vercel para evitar spoofing via X-Forwarded-For
  * @param headers - Headers da requisição
  * @returns IP do cliente
  */
 export function getClientIP(headers: Headers): string {
-  // Verificar headers comuns de proxy/CDN
-  const forwardedFor = headers.get("x-forwarded-for");
-  if (forwardedFor) {
-    // Pegar o primeiro IP da lista (IP original do cliente)
-    return forwardedFor.split(",")[0].trim();
+  // Vercel: header confiável definido pela infraestrutura (não pode ser spoofado)
+  const vercelForwardedFor = headers.get("x-vercel-forwarded-for");
+  if (vercelForwardedFor) {
+    return vercelForwardedFor.split(",")[0].trim();
   }
 
   const realIP = headers.get("x-real-ip");
@@ -105,6 +109,17 @@ export function getClientIP(headers: Headers): string {
   const cfConnectingIP = headers.get("cf-connecting-ip"); // Cloudflare
   if (cfConnectingIP) {
     return cfConnectingIP.trim();
+  }
+
+  // Fallback: X-Forwarded-For (pode ser spoofado - usar apenas quando outros não disponíveis)
+  const forwardedFor = headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  const xClientIP = headers.get("x-client-ip");
+  if (xClientIP) {
+    return xClientIP.trim();
   }
 
   // Fallback para localhost em desenvolvimento
