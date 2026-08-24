@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Icon } from "@/app/components/svg-icon";
 
-const lastUpdated = "2025-11-02";
+const lastUpdated = "2026-03-07";
 
 const mainPages = [
   { href: "/", label: "Página Inicial", icon: "fas fa-arrow-right" },
@@ -13,6 +15,12 @@ const portfolioSections = [
   { href: "/#skills", label: "Habilidades Técnicas" },
   { href: "/#projects", label: "Projetos Profissionais" },
   { href: "/#personal-projects", label: "Projetos Pessoais" },
+  { href: "/#ai-projects", label: "Projetos de IA & Automação" },
+  { href: "/#open-source", label: "Open Source" },
+  { href: "/#certifications", label: "Certificações" },
+  { href: "/#availability", label: "Disponibilidade" },
+  { href: "/blog", label: "Blog" },
+  { href: "/servicos", label: "Serviços" },
   { href: "/#contact", label: "Contato" },
 ];
 
@@ -78,15 +86,13 @@ export default function SitemapPage() {
             Navegue facilmente por todas as seções do portfólio
           </p>
           <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600">
-            <i className="fas fa-clock" aria-hidden="true" />
-            Última atualização: {lastUpdated}
+            <Icon name="fas fa-clock" /> Última atualização: {lastUpdated}
           </div>
         </header>
 
         <section className="mb-10">
           <h2 className="flex items-center gap-2 text-xl font-semibold text-indigo-600">
-            <i className="fas fa-home" aria-hidden="true" />
-            Páginas Principais
+            <Icon name="fas fa-home" /> Páginas Principais
           </h2>
           <ul className="mt-4 space-y-3">
             {mainPages.map(({ href, label, icon }) => (
@@ -95,7 +101,7 @@ export default function SitemapPage() {
                   href={href}
                   className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-slate-700 transition hover:-translate-x-1 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
                 >
-                  <i className={`${icon} text-indigo-500`} aria-hidden="true" />
+                  <Icon name={icon} className="text-indigo-500" />
                   {label}
                 </a>
               </li>
@@ -105,8 +111,7 @@ export default function SitemapPage() {
 
         <section className="mb-10">
           <h2 className="flex items-center gap-2 text-xl font-semibold text-indigo-600">
-            <i className="fas fa-user" aria-hidden="true" />
-            Seções do Portfólio
+            <Icon name="fas fa-user" /> Seções do Portfólio
           </h2>
           <ul className="mt-4 space-y-3">
             {portfolioSections.map(({ href, label }) => (
@@ -115,7 +120,7 @@ export default function SitemapPage() {
                   href={href}
                   className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-slate-700 transition hover:-translate-x-1 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
                 >
-                  <i className="fas fa-arrow-right text-indigo-500" aria-hidden="true" />
+                  <Icon name="fas fa-arrow-right" className="text-indigo-500" />
                   {label}
                 </a>
               </li>
@@ -125,8 +130,7 @@ export default function SitemapPage() {
 
         <section className="mb-10">
           <h2 className="flex items-center gap-2 text-xl font-semibold text-indigo-600">
-            <i className="fas fa-external-link-alt" aria-hidden="true" />
-            Links Externos
+            <Icon name="fas fa-external-link-alt" /> Links Externos
           </h2>
           <ul className="mt-4 space-y-3">
             {externalLinks.map(({ href, label, icon }) => (
@@ -137,7 +141,7 @@ export default function SitemapPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-slate-700 transition hover:-translate-x-1 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
                 >
-                  <i className={`${icon} text-indigo-500`} aria-hidden="true" />
+                  <Icon name={icon} className="text-indigo-500" />
                   {label}
                 </a>
               </li>
@@ -147,8 +151,7 @@ export default function SitemapPage() {
 
         <section>
           <h2 className="flex items-center gap-2 text-xl font-semibold text-indigo-600">
-            <i className="fas fa-cog" aria-hidden="true" />
-            Recursos Técnicos
+            <Icon name="fas fa-cog" /> Recursos Técnicos
           </h2>
           <ul className="mt-4 space-y-3">
             {resources.map(({ href, label, icon }) => (
@@ -157,7 +160,7 @@ export default function SitemapPage() {
                   href={href}
                   className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-slate-700 transition hover:-translate-x-1 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
                 >
-                  <i className={`${icon} text-indigo-500`} aria-hidden="true" />
+                  <Icon name={icon} className="text-indigo-500" />
                   {label}
                 </a>
               </li>
@@ -166,16 +169,14 @@ export default function SitemapPage() {
         </section>
 
         <div className="mt-12 text-center">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-white transition hover:bg-indigo-700"
           >
-            <i className="fas fa-arrow-left" aria-hidden="true" />
-            Voltar ao Início
-          </a>
+            <Icon name="fas fa-arrow-left" /> Voltar ao Início
+          </Link>
         </div>
       </div>
     </div>
   );
 }
-

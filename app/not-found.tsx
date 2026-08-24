@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Icon } from "@/app/components/svg-icon";
+
 export default function NotFound() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-400 via-indigo-500 to-purple-500 px-6">
@@ -12,29 +15,27 @@ export default function NotFound() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-indigo-600 transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <i className="fas fa-home" aria-hidden="true" />
-            Voltar ao Início
-          </a>
-          <a
+            <Icon name="fas fa-home" /> Voltar ao Início
+          </Link>
+          <Link
             href="/curriculo"
             className="inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white hover:text-indigo-600"
           >
-            <i className="fas fa-file-alt" aria-hidden="true" />
-            Ver Currículo
-          </a>
+            <Icon name="fas fa-file-alt" /> Ver Currículo
+          </Link>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6 border-t border-white/20 pt-6 text-sm text-white/80">
-          <a href="/sitemap" className="hover:text-white">
+          <Link href="/sitemap" className="hover:text-white">
             Mapa do Site
-          </a>
-          <a href="/#contact" className="hover:text-white">
+          </Link>
+          <Link href="/#contact" className="hover:text-white">
             Contato
-          </a>
+          </Link>
           <a
             href="https://linkedin.com/in/natanaelvich"
             target="_blank"
@@ -48,4 +49,3 @@ export default function NotFound() {
     </div>
   );
 }
-

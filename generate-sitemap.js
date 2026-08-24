@@ -66,6 +66,20 @@ function generateSitemapXML() {
             comment: 'Seção Projetos Pessoais',
         },
         {
+            loc: `${domain}/#ai-projects`,
+            lastmod: currentDate,
+            changefreq: 'monthly',
+            priority: '0.7',
+            comment: 'Seção Projetos de IA',
+        },
+        {
+            loc: `${domain}/#availability`,
+            lastmod: currentDate,
+            changefreq: 'monthly',
+            priority: '0.7',
+            comment: 'Seção Disponibilidade',
+        },
+        {
             loc: `${domain}/#contact`,
             lastmod: currentDate,
             changefreq: 'monthly',
@@ -78,6 +92,20 @@ function generateSitemapXML() {
             changefreq: 'monthly',
             priority: '0.5',
             comment: 'Página de Sitemap',
+        },
+        {
+            loc: `${domain}/blog`,
+            lastmod: currentDate,
+            changefreq: 'weekly',
+            priority: '0.7',
+            comment: 'Blog Técnico',
+        },
+        {
+            loc: `${domain}/servicos`,
+            lastmod: currentDate,
+            changefreq: 'monthly',
+            priority: '0.7',
+            comment: 'Página de Serviços',
         },
     ];
 

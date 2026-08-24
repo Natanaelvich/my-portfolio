@@ -7,7 +7,7 @@
     <!-- Página Principal -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,50 +15,71 @@
     <!-- Página do Currículo -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/curriculo</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Seções da Página Principal -->
+    <!-- Seção Sobre -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#about</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Seção Experiência -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#experience</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Seção Habilidades -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#skills</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Seção Projetos Profissionais -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#projects</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Seção Projetos Pessoais -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#personal-projects</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Seção Projetos de IA -->
+    <url>
+        <loc>https://www.natanaelsilvalima.dev.br/#ai-projects</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Seção Disponibilidade -->
+    <url>
+        <loc>https://www.natanaelsilvalima.dev.br/#availability</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Seção Contato -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/#contact</loc>
-        <lastmod>2025-11-02</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -66,9 +87,25 @@
     <!-- Página de Sitemap -->
     <url>
         <loc>https://www.natanaelsilvalima.dev.br/sitemap</loc>
-        <lastmod>2025-11-11</lastmod>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
+    </url>
+
+    <!-- Blog Técnico -->
+    <url>
+        <loc>https://www.natanaelsilvalima.dev.br/blog</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Página de Serviços -->
+    <url>
+        <loc>https://www.natanaelsilvalima.dev.br/servicos</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>
