@@ -40,24 +40,17 @@ export function PageEffects({ children }: { children: ReactNode }) {
       link.addEventListener("click", handleNavLinkClick)
     );
 
-    const DARK_HEADER_SECTIONS = new Set(["home", "contact"]);
-
-    const updateHeaderTheme = (sectionId: string) => {
+    const updateHeaderTheme = () => {
       if (!header) return;
-      if (DARK_HEADER_SECTIONS.has(sectionId)) {
-        header.classList.add("header--on-dark");
-        header.classList.remove("header--on-light");
-      } else {
-        header.classList.add("header--on-light");
-        header.classList.remove("header--on-dark");
-      }
+      header.classList.add("header--on-dark");
+      header.classList.remove("header--on-light");
     };
 
     let lastScrollTop = 0;
 
     if (header) {
       header.classList.add("at-top");
-      updateHeaderTheme("home");
+      updateHeaderTheme();
     }
 
     const handleScroll = () => {
@@ -324,7 +317,7 @@ export function PageEffects({ children }: { children: ReactNode }) {
         }
       });
 
-      updateHeaderTheme(current);
+      updateHeaderTheme();
 
       navMenuLinks.forEach((link) => {
         const href = link.getAttribute("href");

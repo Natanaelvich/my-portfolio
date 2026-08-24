@@ -2,8 +2,16 @@ export const siteConfig = {
   name: "Natanael Silva Lima",
   shortName: "Natanael Lima",
   title: "Tech Lead & Desenvolvedor Fullstack",
-  heroTitle: "Desenvolvedor Fullstack & Tech Lead",
-  tagline: "Especialista em React, React Native, Node.js e AI Agents",
+  heroTitle: "Construo produtos digitais que",
+  heroTitleAccent: "chegam à produção.",
+  tagline:
+    "Tech Lead & Fullstack Developer especializado em React, React Native, Node.js e AI Agents.",
+  heroRole: {
+    title: "Tech Lead @",
+    company: "Grupo Abril",
+    description:
+      "Lidero equipes técnicas e construo soluções escaláveis que impactam milhões de usuários.",
+  },
   yearsOfExperience: 7,
   email: "taelima1997@gmail.com",
   linkedin: "https://linkedin.com/in/natanaelvich",
@@ -19,7 +27,7 @@ Atuação forte em definição de arquitetura, tomada de decisões técnicas, CI
 Experiência liderando times e entregando produtos críticos com milhões de usuários, utilizando Node.js, React, React Native e soluções baseadas em IA.`;
 
 export const availability = {
-  status: "Disponível para novas oportunidades",
+  status: "DISPONÍVEL PARA NOVAS OPORTUNIDADES",
   workMode: "Remoto (Brasil)",
   contractTypes: ["CLT", "PJ"],
   targetRoles: [
@@ -54,9 +62,32 @@ export const navLinks = [
 
 export const heroTechStack = [
   { icon: "fab fa-react", label: "React", accent: "#61DAFB" },
+  { icon: "fab fa-react", label: "React Native", accent: "#38bdf8" },
   { icon: "fab fa-node-js", label: "Node.js", accent: "#68A063" },
-  { icon: "fab fa-react", label: "React Native", accent: "#61DAFB" },
-  { icon: "fas fa-robot", label: "AI Agents", accent: "#C4B5FD" },
+  { icon: "fas fa-robot", label: "AI Agents", accent: "#a855f7" },
+] as const;
+
+export const heroStats = [
+  {
+    icon: "fas fa-cube",
+    text: "3+ Apps publicados nas lojas",
+    accent: "#a855f7",
+  },
+  {
+    icon: "fas fa-user",
+    text: "5+ anos desenvolvendo produtos digitais",
+    accent: "#c6ff00",
+  },
+  {
+    icon: "fas fa-globe",
+    text: "Milhões de usuários impactados",
+    accent: "#a855f7",
+  },
+  {
+    icon: "fas fa-map-marker-alt",
+    text: "Remote Brasil Timbiras – MA",
+    accent: "#c6ff00",
+  },
 ] as const;
 
 export const aboutStats = [
