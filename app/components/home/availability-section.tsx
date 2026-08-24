@@ -44,7 +44,10 @@ export function AvailabilitySection() {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              <Icon name="fas fa-calendar-check" /> Marcar horário
+              <span className="btn-leading" aria-hidden="true">
+                <Icon name="fas fa-calendar-check" />
+              </span>
+              <span className="btn-label">Marcar horário</span>
             </a>
           </div>
           <div className="availability-card">

@@ -70,22 +70,26 @@ export const heroTechStack = [
 export const heroStats = [
   {
     icon: "fas fa-cube",
-    text: "3+ Apps publicados nas lojas",
+    value: "3+",
+    label: "Apps publicados nas lojas",
     accent: "#a855f7",
   },
   {
-    icon: "fas fa-user",
-    text: "5+ anos desenvolvendo produtos digitais",
-    accent: "#c6ff00",
+    icon: "fas fa-users",
+    value: "5+ anos",
+    label: "desenvolvendo produtos digitais",
+    accent: "#eab308",
   },
   {
     icon: "fas fa-globe",
-    text: "Milhões de usuários impactados",
+    value: "Milhões",
+    label: "de usuários impactados",
     accent: "#a855f7",
   },
   {
     icon: "fas fa-map-marker-alt",
-    text: "Remote Brasil Timbiras – MA",
+    value: "Remote",
+    label: "Brasil Timbiras – MA",
     accent: "#c6ff00",
   },
 ] as const;

@@ -15,7 +15,9 @@ export function SiteHeader() {
             height={44}
             className="nav-brand-avatar"
           />
-          <span className="nav-brand-name">Natanael Lima</span>
+          <span className="nav-brand-name">
+            Natanael <span className="nav-brand-name-accent">Lima</span>
+          </span>
         </Link>
         <ul className="nav-menu">
           {headerNavLinks.map(({ href, label }) => (
@@ -29,7 +31,10 @@ export function SiteHeader() {
               download="Natanael-Silva-Lima-CV.pdf"
               className="btn-cv"
             >
-              <Icon name="fas fa-download" /> Download CV
+              <span className="btn-leading" aria-hidden="true">
+                <Icon name="fas fa-download" />
+              </span>
+              <span className="btn-label">Download CV</span>
             </a>
           </li>
         </ul>

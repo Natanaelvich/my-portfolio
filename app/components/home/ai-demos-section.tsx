@@ -100,7 +100,10 @@ export function AiDemosSection({ demos }: AiDemosSectionProps) {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              <Icon name="fab fa-github" /> Ver código no GitHub
+              <span className="btn-leading" aria-hidden="true">
+                <Icon name="fab fa-github" />
+              </span>
+              <span className="btn-label">Ver código no GitHub</span>
             </a>
           </div>
         </div>
