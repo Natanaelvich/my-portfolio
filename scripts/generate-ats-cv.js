@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const path = require("path");
+
+// Plain-text ATS CV generated from the same source as the web resume.
+const outputPath = path.join(__dirname, "..", "public", "natan-cv-ats.txt");
+
+const text = `${"=".repeat(60)}
+NATANAEL SILVA LIMA
+Tech Lead & Desenvolvedor Fullstack
+taelima1997@gmail.com | linkedin.com/in/natanaelvich | github.com/natanaelvich
+Timbiras, MA - Remoto
+${"=".repeat(60)}
+
+RESUMO PROFISSIONAL
+Tech Lead e Desenvolvedor Fullstack com mais de 7 anos de experiencia em construcao e lideranca de sistemas web e mobile em escala. Atuacao em arquitetura, CI/CD, observabilidade e integracao com cloud. Experiencia liderando times e entregando produtos criticos com milhoes de usuarios, utilizando Node.js, React, React Native e solucoes baseadas em IA.
+
+EXPERIENCIA PROFISSIONAL
+
+Senior Full Stack Engineer & Tech Lead — Grupo Abril (Out 2023 - Presente)
+- Lideranca tecnica em apps e servicos com milhoes de usuarios
+- Monitoramento ativo, alertas e deploy automatizado para App Store e Google Play
+- Cloud Functions e AI Agents para otimizacao de fluxos internos
+Tecnologias: React Native, Node.js, Google Cloud, AI Agents
+
+Senior Full Stack Engineer & Tech Lead — COAMO Agroindustrial (Jul 2022 - Out 2023)
+- Apps mobile e sistemas web para o setor agroindustrial
+- Integracao Azure, pipelines CI/CD e mentoria de desenvolvedores
+Tecnologias: React Native, Node.js, Azure, SQL Databases
+
+Senior Full Stack Engineer & Tech Lead — BNE (Abr 2021 - Mar 2023)
+- Tech Lead com arquitetura front-end e mentoria
+- Plataforma web e mobile para gestao de documentos
+Tecnologias: ReactJS, React Native, Node.js, Azure, CI/CD
+
+Full Stack Developer — Ideia Solucoes em Sistemas (Jun 2020 - Fev 2022)
+- Apps mobile e sistemas web para o setor imobiliario
+Tecnologias: ReactJS, React Native, PHP, MySQL
+
+PROJETOS FREELANCER
+
+Desenvolvedor React Native — Control Tracker (Nov 2020 - Jul 2023)
+- Rastreamento de veiculos, geolocalizacao em tempo real e mapas
+Tecnologias: React Native, APIs REST, Push Notifications, Mapas
+
+Desenvolvedor React Native — Agroadb (2021 - 2022)
+- Mapeamento de fazendas com georreferenciamento avancado
+Tecnologias: React Native, Mapas, Geolocalizacao
+
+Desenvolvedor React Native — Mundo Tech (2022 - 2023)
+- Controle de estoque offline-first com sincronizacao
+Tecnologias: React Native, SQLite, Offline-first
+
+HABILIDADES
+React Native, React.js, Node.js, NestJS, TypeScript, PostgreSQL, Google Cloud, Azure, CI/CD, AI Agents, LangChain, OpenAI API, Docker, Jest, Cypress
+
+FORMACAO
+Analise e Desenvolvimento de Sistemas — UniFacema (2019 - 2021)
+
+Portfolio: https://www.natanaelsilvalima.dev.br
+`;
+
+fs.writeFileSync(outputPath, text, "utf8");
+console.log(`ATS CV gerado: ${outputPath} (${(fs.statSync(outputPath).size / 1024).toFixed(1)} KB)`);

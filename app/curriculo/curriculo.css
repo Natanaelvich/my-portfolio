@@ -1,9 +1,9 @@
 .curriculo-page {
-  --primary-color: #2563eb;
-  --primary-dark: #1d4ed8;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-light: #94a3b8;
+  --primary-color: #4338ca;
+  --primary-dark: #3730a3;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-light: #64748b;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --border-color: #e2e8f0;
@@ -79,10 +79,11 @@
   color: var(--text-secondary);
 }
 
-.curriculo-page .resume-contact-item i {
+.curriculo-page .resume-contact-item .portfolio-icon {
   color: var(--primary-color);
-  width: 16px;
-  font-size: 14px;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 .curriculo-page section {
@@ -335,6 +336,49 @@
   text-decoration: none;
 }
 
+.cv-actions {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.print-button,
+.cv-action-button {
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.print-button:hover,
+.cv-action-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.cv-action-button--ats {
+  background: #0f766e;
+}
+
+.cv-action-button--ats:hover {
+  background: #0d9488;
+}
+
 .resume-print-button {
   position: fixed;
   top: 20px;
@@ -364,8 +408,9 @@
   box-shadow: var(--shadow-md);
 }
 
-.resume-print-button-trigger i {
-  font-size: 16px;
+.resume-print-button-trigger .portfolio-icon {
+  width: 1rem;
+  height: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -445,6 +490,7 @@
     box-shadow: none;
   }
 
+  .cv-actions,
   .resume-print-button {
     display: none;
   }

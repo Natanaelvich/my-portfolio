@@ -1,23 +1,16 @@
 "use client";
 
-export function PrintButton() {
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
-    }
-  };
+import { Icon } from "@/app/components/svg-icon";
 
+export function PrintButton() {
   return (
-    <div className="resume-print-button">
-      <button
-        type="button"
-        className="resume-print-button-trigger"
-        onClick={handlePrint}
-      >
-        <i className="fas fa-print" aria-hidden="true" />
-        Imprimir PDF
-      </button>
-    </div>
+    <button
+      type="button"
+      className="print-button"
+      onClick={() => window.print()}
+      aria-label="Imprimir currículo em PDF"
+    >
+      <Icon name="fas fa-print" /> Imprimir PDF
+    </button>
   );
 }
-
