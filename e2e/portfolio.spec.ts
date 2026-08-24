@@ -3,9 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe("Portfolio homepage", () => {
   test("loads hero with open to work badge and correct title", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator(".hero-title")).toContainText("Tech Lead");
+    await expect(page.locator(".hero-title")).toContainText("chegam à produção");
     await expect(page.locator(".open-to-work-badge")).toContainText(
-      "Disponível para novas oportunidades"
+      "DISPONÍVEL PARA NOVAS OPORTUNIDADES"
     );
   });
 
