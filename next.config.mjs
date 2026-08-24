@@ -1,12 +1,10 @@
-/** @type {import('next').NextConfig} */
-
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
-  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://va.vercel-scripts.com;
+  style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob: https:;
-  font-src 'self' data: https://cdnjs.cloudflare.com;
-  connect-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
+  font-src 'self' data:;
+  connect-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://vitals.vercel-insights.com;
   frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;
   object-src 'none';
   base-uri 'self';
@@ -17,7 +15,6 @@ const contentSecurityPolicy = `
   .replace(/\s{2,}/g, " ")
   .trim();
 
-// Headers de segurança para mitigar vulnerabilidades comuns
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -29,11 +26,12 @@ const securityHeaders = [
   { key: "Content-Security-Policy", value: contentSecurityPolicy },
 ];
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  experimental: {
-    typedRoutes: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
@@ -41,4 +39,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
