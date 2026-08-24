@@ -1,8 +1,19 @@
 "use server";
 
+import nodemailer from "nodemailer";
 import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 import { verifyRecaptcha } from "@/lib/recaptcha";
 import { headers } from "next/headers";
+
+const transporter = nodemailer.createTransport({
+  host: process.env.ZOHO_SMTP_HOST || "smtp.zoho.com",
+  port: Number(process.env.ZOHO_SMTP_PORT) || 465,
+  secure: (Number(process.env.ZOHO_SMTP_PORT) || 465) === 465,
+  auth: {
+    user: process.env.ZOHO_USER,
+    pass: process.env.ZOHO_APP_PASSWORD,
+  },
+});
 
 export interface SendEmailResult {
   success: boolean;
@@ -18,6 +29,13 @@ interface EmailFormData {
   recaptchaToken: string;
 }
 
+interface SanitizedEmailData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 /**
  * Valida os dados do formulário
  */
@@ -27,7 +45,6 @@ function validateFormData(data: EmailFormData): {
 } {
   const { name, email, subject, message } = data;
 
-  // Validar campos obrigatórios
   if (!name || !email || !subject || !message) {
     return {
       valid: false,
@@ -35,7 +52,6 @@ function validateFormData(data: EmailFormData): {
     };
   }
 
-  // Validar comprimento dos campos
   if (name.trim().length < 2 || name.trim().length > 100) {
     return {
       valid: false,
@@ -57,7 +73,6 @@ function validateFormData(data: EmailFormData): {
     };
   }
 
-  // Validar formato do email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.trim())) {
     return {
@@ -71,30 +86,146 @@ function validateFormData(data: EmailFormData): {
 
 /**
  * Sanitiza o conteúdo do formulário
- * Remove caracteres perigosos para injeção HTML, XSS e quebras de contexto
  */
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function sanitizeInput(input: string): string {
   return input
     .trim()
-    .replace(/[<>]/g, "") // Remover tags HTML
-    .replace(/javascript:/gi, "") // Remover protocolo javascript (XSS)
-    .replace(/data:/gi, "") // Remover protocolo data (possível XSS)
-    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "") // Remover caracteres de controle
-    .substring(0, 5000); // Limitar tamanho máximo
+    .replace(/[<>]/g, "")
+    .replace(/javascript:/gi, "")
+    .replace(/data:/gi, "")
+    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "")
+    .substring(0, 5000);
+}
+
+function buildNotificationEmail(
+  data: SanitizedEmailData & { ip: string; timestamp: string }
+): string {
+  return `<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
+    .header { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 20px; text-align: center; }
+    .header h2 { margin: 0; font-size: 24px; }
+    .content { padding: 30px; background: #f9fafb; }
+    .field { margin-bottom: 20px; }
+    .label { font-weight: bold; color: #1e3a8a; margin-bottom: 8px; display: block; font-size: 14px; }
+    .value { color: #374151; font-size: 15px; }
+    .message-box { background: white; padding: 20px; border-left: 4px solid #1e3a8a; margin: 15px 0; border-radius: 4px; white-space: pre-wrap; }
+    .footer { background: #f3f4f6; padding: 15px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }
+    .meta-info { margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+    .meta-info div { margin-bottom: 5px; }
+    a { color: #1e40af; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Nova Mensagem do Portfólio</h2>
+    </div>
+    <div class="content">
+      <div class="field">
+        <span class="label">Nome:</span>
+        <span class="value">${escapeHtml(data.name)}</span>
+      </div>
+      <div class="field">
+        <span class="label">Email:</span>
+        <span class="value"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></span>
+      </div>
+      <div class="field">
+        <span class="label">Assunto:</span>
+        <span class="value">${escapeHtml(data.subject)}</span>
+      </div>
+      <div class="field">
+        <span class="label">Mensagem:</span>
+        <div class="message-box">${escapeHtml(data.message)}</div>
+      </div>
+      <div class="meta-info">
+        <div><strong>Enviado em:</strong> ${escapeHtml(data.timestamp)}</div>
+        <div><strong>IP do remetente:</strong> ${escapeHtml(data.ip)}</div>
+      </div>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">Esta mensagem foi enviada através do formulário de contato do portfólio.</p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+function buildConfirmationEmail(data: SanitizedEmailData): string {
+  return `<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f9fafb; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
+    .header { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0; font-size: 28px; font-weight: 600; }
+    .content { padding: 40px 30px; }
+    .greeting { font-size: 18px; color: #1e3a8a; margin-bottom: 20px; font-weight: 600; }
+    .message { font-size: 16px; color: #374151; line-height: 1.8; margin-bottom: 25px; }
+    .highlight-box { background: #eff6ff; border-left: 4px solid #1e40af; padding: 20px; margin: 25px 0; border-radius: 4px; }
+    .highlight-box p { margin: 0; color: #1e40af; font-weight: 500; }
+    .footer { background: #f3f4f6; padding: 25px; text-align: center; font-size: 14px; color: #6b7280; border-top: 1px solid #e5e7eb; }
+    .footer p { margin: 5px 0; }
+    .signature { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+    .signature p { margin: 5px 0; color: #374151; }
+    .signature strong { color: #1e3a8a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Mensagem Recebida!</h1>
+    </div>
+    <div class="content">
+      <div class="greeting">Olá ${escapeHtml(data.name)},</div>
+      <div class="message">
+        <p>Recebemos sua mensagem através do formulário de contato do meu portfólio e gostaria de agradecer pelo seu interesse em entrar em contato.</p>
+        <p>Estou revisando sua mensagem e retornarei o mais breve possível, geralmente em até 24 horas.</p>
+      </div>
+      <div class="highlight-box">
+        <p>✓ Sua mensagem foi recebida com sucesso!</p>
+      </div>
+      <div class="signature">
+        <p><strong>Assunto da sua mensagem:</strong></p>
+        <p>${escapeHtml(data.subject)}</p>
+        <p style="margin-top: 20px;"><strong>Atenciosamente,</strong></p>
+        <p><strong>Natanael Silva Lima</strong></p>
+        <p>Tech Lead & Desenvolvedor Fullstack</p>
+      </div>
+    </div>
+    <div class="footer">
+      <p><strong>Esta é uma mensagem automática de confirmação.</strong></p>
+      <p>Por favor, não responda este email. Para entrar em contato, use o formulário em meu portfólio.</p>
+    </div>
+  </div>
+</body>
+</html>`;
 }
 
 /**
- * Server Action para enviar email via n8n
+ * Server Action para enviar email via Zoho Mail SMTP
  */
 export async function sendEmail(
   formData: EmailFormData
 ): Promise<SendEmailResult> {
   try {
-    // Obter headers para rate limiting e IP
     const headersList = await headers();
     const clientIP = getClientIP(headersList);
 
-    // 1. Validar dados do formulário
     const validation = validateFormData(formData);
     if (!validation.valid) {
       return {
@@ -104,8 +235,7 @@ export async function sendEmail(
       };
     }
 
-    // 2. Verificar rate limiting
-    const rateLimit = checkRateLimit(clientIP);
+    const rateLimit = await checkRateLimit(clientIP);
     if (!rateLimit.allowed) {
       const resetTime = rateLimit.resetTime
         ? new Date(rateLimit.resetTime).toLocaleTimeString("pt-BR")
@@ -117,44 +247,51 @@ export async function sendEmail(
       };
     }
 
-    // 3. Validar reCAPTCHA
     if (!formData.recaptchaToken) {
-      return {
-        success: false,
-        message: "Erro de segurança",
-        error: "Token do reCAPTCHA não fornecido",
-      };
-    }
+      const isDevWithoutRecaptcha =
+        process.env.NODE_ENV === "development" &&
+        !process.env.RECAPTCHA_SECRET_KEY;
 
-    const recaptchaResult = await verifyRecaptcha(
-      formData.recaptchaToken,
-      clientIP
-    );
-
-    if (!recaptchaResult.valid) {
-      console.warn(
-        `reCAPTCHA falhou para IP ${clientIP}:`,
-        recaptchaResult.error
+      if (!isDevWithoutRecaptcha) {
+        return {
+          success: false,
+          message: "Erro de segurança",
+          error: "Token do reCAPTCHA não fornecido",
+        };
+      }
+    } else {
+      const recaptchaResult = await verifyRecaptcha(
+        formData.recaptchaToken,
+        clientIP
       );
-      return {
-        success: false,
-        message: "Validação de segurança falhou",
-        error: "Por favor, tente novamente",
-      };
+
+      if (!recaptchaResult.valid) {
+        console.warn(
+          `reCAPTCHA falhou para IP ${clientIP}:`,
+          recaptchaResult.error
+        );
+        return {
+          success: false,
+          message: "Validação de segurança falhou",
+          error: "Por favor, tente novamente",
+        };
+      }
     }
 
-    // 4. Sanitizar dados
-    const sanitizedData = {
+    const sanitizedData: SanitizedEmailData = {
       name: sanitizeInput(formData.name),
       email: sanitizeInput(formData.email),
       subject: sanitizeInput(formData.subject),
       message: sanitizeInput(formData.message),
     };
 
-    // 5. Verificar se a URL do webhook está configurada
-    const webhookUrl = process.env.N8N_WEBHOOK_URL;
-    if (!webhookUrl) {
-      console.error("N8N_WEBHOOK_URL não configurada");
+    const zohoUser = process.env.ZOHO_USER;
+    const zohoAppPassword = process.env.ZOHO_APP_PASSWORD;
+    const fromEmail = process.env.ZOHO_FROM_EMAIL;
+    const toEmail = process.env.ZOHO_TO_EMAIL;
+
+    if (!zohoUser || !zohoAppPassword || !fromEmail || !toEmail) {
+      console.error("Configuração de email incompleta");
       return {
         success: false,
         message: "Erro de configuração",
@@ -162,32 +299,32 @@ export async function sendEmail(
       };
     }
 
-    // 6. Preparar payload para n8n
-    const payload = {
-      name: sanitizedData.name,
-      email: sanitizedData.email,
-      subject: sanitizedData.subject,
-      message: sanitizedData.message,
-      timestamp: new Date().toISOString(),
-      ip: clientIP,
-    };
-
-    // 7. Fazer requisição para o webhook do n8n
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-      // Timeout de 10 segundos
-      signal: AbortSignal.timeout(10000),
+    const timestamp = new Date().toLocaleString("pt-BR", {
+      timeZone: "America/Sao_Paulo",
     });
 
-    if (!response.ok) {
-      const errorText = await response.text().catch(() => "Erro desconhecido");
-      console.error(
-        `Erro ao chamar webhook n8n: ${response.status} - ${errorText}`
-      );
+    const [notificationResult, confirmationResult] = await Promise.all([
+      transporter.sendMail({
+        from: `"Natanael Silva Lima" <${fromEmail}>`,
+        to: toEmail,
+        replyTo: sanitizedData.email,
+        subject: `Nova mensagem do portfólio: ${sanitizedData.subject}`,
+        html: buildNotificationEmail({
+          ...sanitizedData,
+          ip: clientIP,
+          timestamp,
+        }),
+      }),
+      transporter.sendMail({
+        from: `"Natanael Silva Lima" <${fromEmail}>`,
+        to: sanitizedData.email,
+        subject: "Recebemos sua mensagem!",
+        html: buildConfirmationEmail(sanitizedData),
+      }),
+    ]);
+
+    if (notificationResult.rejected.length > 0) {
+      console.error("Erro ao enviar notificação:", notificationResult.rejected);
       return {
         success: false,
         message: "Erro ao enviar mensagem",
@@ -195,22 +332,19 @@ export async function sendEmail(
       };
     }
 
-    // 8. Retornar sucesso
+    if (confirmationResult.rejected.length > 0) {
+      console.warn(
+        "Notificação enviada, mas confirmação falhou:",
+        confirmationResult.rejected
+      );
+    }
+
     return {
       success: true,
       message: "Mensagem enviada com sucesso! Entrarei em contato em breve.",
     };
   } catch (error) {
     console.error("Erro ao processar envio de email:", error);
-
-    // Verificar se é erro de timeout
-    if (error instanceof Error && error.name === "AbortError") {
-      return {
-        success: false,
-        message: "Timeout",
-        error: "A requisição demorou muito. Tente novamente.",
-      };
-    }
 
     return {
       success: false,
@@ -219,4 +353,3 @@ export async function sendEmail(
     };
   }
 }
-
