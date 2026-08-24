@@ -9,7 +9,7 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
   - [1. Acessar o Dashboard do Projeto](#1-acessar-o-dashboard-do-projeto)
   - [2. Configurar Variáveis de Ambiente](#2-configurar-variáveis-de-ambiente)
     - [2.1. Acessar Environment Variables](#21-acessar-environment-variables)
-    - [2.2. Adicionar Variáveis do n8n](#22-adicionar-variáveis-do-n8n)
+    - [2.2. Adicionar Variáveis do Zoho Mail](#22-adicionar-variáveis-do-zoho-mail)
     - [2.3. Adicionar Variáveis do reCAPTCHA](#23-adicionar-variáveis-do-recaptcha)
     - [2.4. Adicionar Variáveis de Rate Limiting (Opcional)](#24-adicionar-variáveis-de-rate-limiting-opcional)
   - [3. Verificar Variáveis Configuradas](#3-verificar-variáveis-configuradas)
@@ -20,7 +20,9 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
   - [8. Usar Vercel KV para Rate Limiting Persistente (Opcional)](#8-usar-vercel-kv-para-rate-limiting-persistente-opcional)
     - [8.1. Criar Vercel KV Database](#81-criar-vercel-kv-database)
     - [8.2. Obter Credenciais](#82-obter-credenciais)
-    - [8.3. Atualizar Código (Futuro)](#83-atualizar-código-futuro)
+    - [8.3. Integração no Código](#83-integração-no-código)
+    - [8.4. Analytics e Speed Insights](#84-analytics-e-speed-insights)
+    - [8.5. URL de Agendamento](#85-url-de-agendamento)
   - [9. Configurar Logs e Monitoramento](#9-configurar-logs-e-monitoramento)
     - [9.1. Ver Logs em Tempo Real](#91-ver-logs-em-tempo-real)
     - [9.2. Configurar Alertas (Opcional)](#92-configurar-alertas-opcional)
@@ -30,7 +32,7 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
   - [11. Verificar Headers e IPs](#11-verificar-headers-e-ips)
 - [Troubleshooting](#troubleshooting)
   - [Variáveis não funcionam](#variáveis-não-funcionam)
-  - [Erro: "N8N_WEBHOOK_URL não configurada"](#erro-n8n_webhook_url-não-configurada)
+  - [Erro: "Configuração de email incompleta"](#erro-configuração-de-email-incompleta)
   - [Erro: "reCAPTCHA site key is missing"](#erro-recaptcha-site-key-is-missing)
   - [Formulário não funciona em produção](#formulário-não-funciona-em-produção)
   - [Rate limiting muito restritivo](#rate-limiting-muito-restritivo)
@@ -61,15 +63,15 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
 1. No projeto, vá em **Settings** (Configurações)
 2. Clique em **Environment Variables** no menu lateral
 
-#### 2.2. Adicionar Variáveis do n8n
+#### 2.2. Adicionar Variáveis do Zoho Mail
 
 1. Clique em **"Add New"** ou **"Adicionar Nova"**
-2. Adicione a variável:
+2. Adicione as variáveis de SMTP:
 
-   **Key**: `N8N_WEBHOOK_URL`
+   **Key**: `ZOHO_SMTP_HOST`
    
-   **Value**: URL do seu webhook do n8n
-   - Exemplo: `https://seu-n8n.com/webhook/abc123def456`
+   **Value**: Servidor SMTP do Zoho
+   - Exemplo: `smtp.zoho.com`
    
    **Environments**: Selecione onde aplicar:
    - ✅ Production (Produção)
@@ -77,6 +79,80 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
    - ✅ Development (Desenvolvimento - opcional)
 
 3. Clique em **"Save"**
+
+4. Adicione a porta SMTP:
+
+   **Key**: `ZOHO_SMTP_PORT`
+   
+   **Value**: Porta SMTP do Zoho
+   - Use `465` para SSL (recomendado)
+   - Ou `587` para STARTTLS
+   
+   **Environments**:
+   - ✅ Production
+   - ✅ Preview
+   - ✅ Development
+
+5. Clique em **"Save"**
+
+6. Adicione a conta de envio:
+
+   **Key**: `ZOHO_USER`
+   
+   **Value**: Email completo da conta Zoho
+   - Exemplo: `contato@natanaelsilvalima.dev.br`
+   
+   **Environments**:
+   - ✅ Production
+   - ✅ Preview
+   - ✅ Development
+
+7. Clique em **"Save"**
+
+8. Adicione a senha de aplicativo:
+
+   **Key**: `ZOHO_APP_PASSWORD`
+   
+   **Value**: Senha de aplicativo gerada no Zoho Mail
+   - Requer autenticação de dois fatores ativada
+   - Não use a senha normal da conta
+   - Exemplo: `abc123def456`
+   
+   **Environments**:
+   - ✅ Production
+   - ✅ Preview
+   - ✅ Development
+
+9. Clique em **"Save"**
+
+10. Adicione a variável de remetente:
+
+   **Key**: `ZOHO_FROM_EMAIL`
+   
+   **Value**: Email que aparecerá como remetente
+   - Deve ser uma caixa de correio ou alias configurado no Zoho
+   - Exemplo: `contato@natanaelsilvalima.dev.br`
+   
+   **Environments**:
+   - ✅ Production
+   - ✅ Preview
+   - ✅ Development
+
+11. Clique em **"Save"**
+
+12. Adicione a variável de destino:
+
+   **Key**: `ZOHO_TO_EMAIL`
+   
+   **Value**: Email que receberá as notificações do formulário
+   - Exemplo: `seu-email@gmail.com`
+   
+   **Environments**:
+   - ✅ Production
+   - ✅ Preview
+   - ✅ Development
+
+13. Clique em **"Save"**
 
 #### 2.3. Adicionar Variáveis do reCAPTCHA
 
@@ -155,7 +231,12 @@ Este guia explica como configurar variáveis de ambiente, domínios e recursos a
 
 Após adicionar todas as variáveis, você deve ter:
 
-- ✅ `N8N_WEBHOOK_URL`
+- ✅ `ZOHO_SMTP_HOST`
+- ✅ `ZOHO_SMTP_PORT`
+- ✅ `ZOHO_USER`
+- ✅ `ZOHO_APP_PASSWORD`
+- ✅ `ZOHO_FROM_EMAIL`
+- ✅ `ZOHO_TO_EMAIL`
 - ✅ `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`
 - ✅ `RECAPTCHA_SECRET_KEY`
 - ✅ `RATE_LIMIT_MAX_REQUESTS` (opcional)
@@ -196,8 +277,8 @@ Se você quiser valores diferentes por ambiente:
 
 1. Ao adicionar uma variável, você pode selecionar ambientes específicos
 2. Exemplo:
-   - Production: `N8N_WEBHOOK_URL` = URL de produção
-   - Preview: `N8N_WEBHOOK_URL` = URL de teste/staging
+   - Production: `ZOHO_FROM_EMAIL` = `contato@natanaelsilvalima.dev.br`
+   - Preview: `ZOHO_FROM_EMAIL` = `seu-email-teste@zoho.com`
 
 ### 8. Usar Vercel KV para Rate Limiting Persistente (Opcional)
 
@@ -221,9 +302,17 @@ Para rate limiting mais robusto que persiste entre deployments:
    - `KV_REST_API_URL`
    - `KV_REST_API_TOKEN`
 
-#### 8.3. Atualizar Código (Futuro)
+#### 8.3. Integração no Código
 
-Se quiser usar Vercel KV, você precisaria atualizar `lib/rate-limit.ts` para usar o KV ao invés do Map em memória. Isso é opcional e o código atual funciona bem para a maioria dos casos.
+O projeto já usa Vercel KV automaticamente quando `KV_REST_API_URL` e `KV_REST_API_TOKEN` estão configurados (`lib/rate-limit.ts`). Sem essas variáveis, o rate limiting usa memória local (adequado para desenvolvimento).
+
+### 8.4. Analytics e Speed Insights
+
+`@vercel/analytics` e `@vercel/speed-insights` já estão integrados em `app/layout.tsx`. Na Vercel, basta fazer deploy — não é necessário configurar variáveis extras.
+
+### 8.5. URL de Agendamento
+
+Configure `NEXT_PUBLIC_SCHEDULING_URL` com o link do Calendly, Cal.com ou LinkedIn. O padrão aponta para o perfil do LinkedIn.
 
 ### 9. Configurar Logs e Monitoramento
 
@@ -283,11 +372,13 @@ O código em `lib/rate-limit.ts` já trata esses headers corretamente.
    - Preview: em previews e staging
    - Development: apenas em desenvolvimento local
 
-### Erro: "N8N_WEBHOOK_URL não configurada"
+### Erro: "Configuração de email incompleta"
 
-1. Verifique se a variável está adicionada no Vercel
-2. Verifique se fez redeploy após adicionar
-3. Verifique se selecionou o ambiente correto (Production/Preview)
+1. Verifique se as variáveis `ZOHO_USER`, `ZOHO_APP_PASSWORD`, `ZOHO_FROM_EMAIL` e `ZOHO_TO_EMAIL` estão adicionadas no Vercel
+2. Verifique se a senha de aplicativo foi gerada corretamente no Zoho Mail (requer autenticação de dois fatores)
+3. Verifique se o email em `ZOHO_USER` e `ZOHO_FROM_EMAIL` corresponde a uma caixa de correio existente no Zoho
+4. Verifique se fez redeploy após adicionar as variáveis
+5. Verifique se selecionou o ambiente correto (Production/Preview)
 
 ### Erro: "reCAPTCHA site key is missing"
 
@@ -299,7 +390,7 @@ O código em `lib/rate-limit.ts` já trata esses headers corretamente.
 
 1. Verifique os logs do Vercel
 2. Verifique se todas as variáveis estão configuradas
-3. Teste o webhook do n8n diretamente
+3. Teste as credenciais SMTP do Zoho em um cliente de email ou script isolado
 4. Verifique se o reCAPTCHA está configurado corretamente
 
 ### Rate limiting muito restritivo
@@ -333,7 +424,10 @@ O código em `lib/rate-limit.ts` já trata esses headers corretamente.
 
 Antes de ir para produção, verifique:
 
-- [ ] `N8N_WEBHOOK_URL` configurada e testada
+- [ ] `ZOHO_USER` configurado
+- [ ] `ZOHO_APP_PASSWORD` configurada e testada
+- [ ] `ZOHO_FROM_EMAIL` configurado
+- [ ] `ZOHO_TO_EMAIL` configurado
 - [ ] `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` configurada
 - [ ] `RECAPTCHA_SECRET_KEY` configurada
 - [ ] `RATE_LIMIT_MAX_REQUESTS` configurada (opcional)
@@ -352,7 +446,7 @@ Após configurar tudo no Vercel:
 2. ✅ Monitore por alguns dias
 3. ✅ Ajuste configurações conforme necessário
 4. ✅ Configure Cloudflare (veja `cloudflare-setup.md`)
-5. ✅ Configure n8n (veja `n8n-setup.md`)
+5. ✅ Configure Zoho Mail (veja `zoho-setup.md`)
 6. ✅ Configure reCAPTCHA (veja `recaptcha-setup.md`)
 
 ## Recursos Adicionais

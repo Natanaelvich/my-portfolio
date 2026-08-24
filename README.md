@@ -1,14 +1,15 @@
 # Natanael Silva Lima – Portfolio (Next.js 14)
 
-Este repositório contém a versão refatorada do portfólio profissional do Natanael Silva Lima construída com **Next.js 14 (App Router)**, **TypeScript** e **Tailwind CSS**. Todo o layout e comportamento do site original em HTML/CSS/JS foi preservado enquanto a base do projeto foi modernizada para facilitar manutenção, deploy e evolução futura.
+Este repositório contém a versão refatorada do portfólio profissional do Natanael Silva Lima construída com **Next.js 14 (App Router)**, **TypeScript** e **Tailwind CSS**.
 
 ## Visão Geral
 
 - **Next.js 14 (App Router)** com renderização híbrida e suporte a metadata nativo.
-- **Tailwind CSS 3** para utilitários e tokens de design, mantendo as animações e estilos originais através de camadas globais.
-- **TypeScript** com checagem estrita para páginas, componentes e scripts.
-- **ESLint + Prettier** já configurados (`next/core-web-vitals` + `next/typescript`).
-- **Sitemap XML** gerado por script (`generate-sitemap.js`) e metadados Open Graph/Twitter centralizados no `app/layout.tsx`.
+- **Tailwind CSS 3** para utilitários e tokens de design.
+- **TypeScript** com checagem estrita.
+- **Conteúdo centralizado** em `content/profile.ts` (single source of truth).
+- **Formulário de contato** via Server Action + Zoho SMTP + reCAPTCHA v3.
+- **Sitemap XML** gerado por script (`generate-sitemap.js`).
 
 ## Requisitos
 
@@ -26,73 +27,62 @@ O comando `dev` inicia o servidor de desenvolvimento na porta `3000`.
 
 ### Scripts Disponíveis
 
-| Script            | Descrição                                                                 |
-|-------------------|----------------------------------------------------------------------------|
-| `npm run dev`     | Inicia o ambiente de desenvolvimento                                      |
-| `npm run build`   | Gera o build de produção (`.next`)                                        |
-| `npm run start`   | Executa o build de produção                                               |
-| `npm run lint`    | Executa o `next lint` (ESLint + regras do Next)                           |
-| `npm run format`  | Formata o projeto usando Prettier                                         |
+| Script | Descrição |
+|--------|-----------|
+| `npm run dev` | Inicia o ambiente de desenvolvimento |
+| `npm run build` | Gera o build de produção |
+| `npm run start` | Executa o build de produção |
+| `npm run lint` | Executa o ESLint |
+| `npm run format` | Formata com Prettier |
+| `npm run test:e2e` | Testes E2E com Playwright |
+| `node scripts/update-seo.js` | Atualiza `public/sitemap.xml` |
 
-### SEO
+### Variáveis de Ambiente
 
-Para atualizar o `sitemap.xml` com a data atual:
+Copie `.env.example` para `.env.local` e configure:
 
-```bash
-node scripts/update-seo.js
-```
-
-O script escreve o arquivo em `public/sitemap.xml` e garante que o `robots.txt` referencie o domínio correto.
+- `ZOHO_*` — SMTP do Zoho Mail (ver `docs/zoho-setup.md`)
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` / `RECAPTCHA_SECRET_KEY` (ver `docs/recaptcha-setup.md`)
 
 ## Estrutura Principal
 
 ```
 my-portfolio/
 ├── app/
-│   ├── layout.tsx        # Layout global + metadata e fontes
-│   ├── globals.css       # Tailwind + estilos globais derivados do layout original
-│   ├── page.tsx          # Página principal (todas as seções do portfólio)
-│   ├── not-found.tsx     # Página 404 customizada
-│   ├── curriculo/        # Página de currículo (rota /curriculo)
-│   └── sitemap/          # Página de sitemap em /sitemap
-├── public/               # Ativos estáticos (imagens, PDF, favicons, sitemap.xml)
-├── scripts/              # Scripts utilitários (update-seo.js)
-├── generate-sitemap.js   # Gerador programático de sitemap XML
-├── tailwind.config.ts
-├── tsconfig.json
-└── README.md
+│   ├── layout.tsx          # Layout global + metadata e JSON-LD
+│   ├── page.tsx            # Página principal
+│   ├── actions/send-email.ts
+│   ├── components/contact-form.tsx
+│   ├── curriculo/          # Rota /curriculo
+│   └── sitemap/            # Rota /sitemap
+├── content/
+│   └── profile.ts          # Dados compartilhados (home + currículo)
+├── lib/                    # rate-limit, recaptcha
+├── public/                 # Assets estáticos
+└── docs/                   # Guias de setup
 ```
 
-## Manutenção do Layout
-
-- O CSS legado foi migrado para `app/globals.css` utilizando Tailwind e camadas customizadas para garantir fidelidade visual.
-- Funcionalidades interativas originais (nav mobile, animações, contadores, formulário com mailto, botão de scroll, etc.) foram reimplementadas em `app/page.tsx` usando React e `useEffect`.
-- Páginas auxiliares (`curriculo`, `sitemap`, `404`) foram recriadas como rotas Next e usam dados estruturados em arrays para facilitar edição.
-
 ## Deploy
-
-O projeto segue o fluxo padrão do Next.js. Para gerar e testar o build de produção:
 
 ```bash
 npm run build
 npm run start
 ```
 
-Os arquivos hospedados em `public/` continuam servindo assets estáticos (imagens, PDF do currículo, verificação Google, etc.).
+Deploy recomendado na Vercel — ver `docs/vercel-setup.md`.
 
-## Checklist de Testes Manuais
+## Checklist de Testes
 
-- [ ] Verificar navegação de todas as seções (header fixo, menu mobile).
-- [ ] Validar animações de entrada, contador e botão "voltar ao topo".
-- [ ] Testar formulário de contato (abertura do cliente de e-mail com dados preenchidos).
-- [ ] Conferir roteamento `/curriculo`, `/sitemap`, rota inexistente (404) e ativos estáticos.
-- [ ] Inspecionar metatags (Open Graph / Twitter) e JSON-LD via DevTools.
+- [ ] Navegação de todas as seções (incluindo IA e Disponibilidade)
+- [ ] Formulário de contato (validação + envio via Zoho SMTP)
+- [ ] Rotas `/curriculo`, `/sitemap`, 404
+- [ ] Metatags e JSON-LD via DevTools
+- [ ] `npm run test:e2e` (Playwright)
 
 ## Licença
 
-Projeto distribuído sob a licença MIT. Consulte o arquivo `LICENSE` caso seja adicionado futuramente.
+Projeto distribuído sob a licença MIT.
 
 ---
 
-Desenvolvido por **Natanael Silva Lima** – Tech Lead & Desenvolvedor Fullstack. Portfólio online: [https://www.natanaelsilvalima.dev.br](https://www.natanaelsilvalima.dev.br)
-
+Desenvolvido por **Natanael Silva Lima** – [natanaelsilvalima.dev.br](https://www.natanaelsilvalima.dev.br)
