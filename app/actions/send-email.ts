@@ -1,19 +1,25 @@
 "use server";
 
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 import { verifyRecaptcha } from "@/lib/recaptcha";
 import { headers } from "next/headers";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.ZOHO_SMTP_HOST || "smtp.zoho.com",
-  port: Number(process.env.ZOHO_SMTP_PORT) || 465,
-  secure: (Number(process.env.ZOHO_SMTP_PORT) || 465) === 465,
-  auth: {
-    user: process.env.ZOHO_USER,
-    pass: process.env.ZOHO_APP_PASSWORD,
-  },
-});
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  if (!apiKey) return null;
+  return new Resend(apiKey);
+}
+
+function fromAddress() {
+  const email =
+    process.env.RESEND_FROM_EMAIL?.trim() || "noreply@solunorde.com.br";
+  return `Natanael Silva Lima <${email}>`;
+}
+
+function adminEmail() {
+  return process.env.RESEND_TO_EMAIL?.trim() || "taelima1997@gmail.com";
+}
 
 export interface SendEmailResult {
   success: boolean;
@@ -217,7 +223,7 @@ function buildConfirmationEmail(data: SanitizedEmailData): string {
 }
 
 /**
- * Server Action para enviar email via Zoho Mail SMTP
+ * Server Action para enviar email via Resend
  */
 export async function sendEmail(
   formData: EmailFormData
@@ -285,13 +291,11 @@ export async function sendEmail(
       message: sanitizeInput(formData.message),
     };
 
-    const zohoUser = process.env.ZOHO_USER;
-    const zohoAppPassword = process.env.ZOHO_APP_PASSWORD;
-    const fromEmail = process.env.ZOHO_FROM_EMAIL;
-    const toEmail = process.env.ZOHO_TO_EMAIL;
+    const resend = getResendClient();
+    const toEmail = adminEmail();
 
-    if (!zohoUser || !zohoAppPassword || !fromEmail || !toEmail) {
-      console.error("Configuração de email incompleta");
+    if (!resend) {
+      console.error("RESEND_API_KEY não configurada");
       return {
         success: false,
         message: "Erro de configuração",
@@ -303,28 +307,31 @@ export async function sendEmail(
       timeZone: "America/Sao_Paulo",
     });
 
+    const notificationHtml = buildNotificationEmail({
+      ...sanitizedData,
+      ip: clientIP,
+      timestamp,
+    });
+    const confirmationHtml = buildConfirmationEmail(sanitizedData);
+
     const [notificationResult, confirmationResult] = await Promise.all([
-      transporter.sendMail({
-        from: `"Natanael Silva Lima" <${fromEmail}>`,
+      resend.emails.send({
+        from: fromAddress(),
         to: toEmail,
         replyTo: sanitizedData.email,
         subject: `Nova mensagem do portfólio: ${sanitizedData.subject}`,
-        html: buildNotificationEmail({
-          ...sanitizedData,
-          ip: clientIP,
-          timestamp,
-        }),
+        html: notificationHtml,
       }),
-      transporter.sendMail({
-        from: `"Natanael Silva Lima" <${fromEmail}>`,
+      resend.emails.send({
+        from: fromAddress(),
         to: sanitizedData.email,
         subject: "Recebemos sua mensagem!",
-        html: buildConfirmationEmail(sanitizedData),
+        html: confirmationHtml,
       }),
     ]);
 
-    if (notificationResult.rejected.length > 0) {
-      console.error("Erro ao enviar notificação:", notificationResult.rejected);
+    if (notificationResult.error) {
+      console.error("Erro ao enviar notificação:", notificationResult.error);
       return {
         success: false,
         message: "Erro ao enviar mensagem",
@@ -332,10 +339,10 @@ export async function sendEmail(
       };
     }
 
-    if (confirmationResult.rejected.length > 0) {
+    if (confirmationResult.error) {
       console.warn(
         "Notificação enviada, mas confirmação falhou:",
-        confirmationResult.rejected
+        confirmationResult.error,
       );
     }
 
