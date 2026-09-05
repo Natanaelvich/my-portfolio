@@ -8,7 +8,7 @@ Este repositório contém a versão refatorada do portfólio profissional do Nat
 - **Tailwind CSS 3** para utilitários e tokens de design.
 - **TypeScript** com checagem estrita.
 - **Conteúdo centralizado** em `content/profile.ts` (single source of truth).
-- **Formulário de contato** via Server Action + Zoho SMTP + reCAPTCHA v3.
+- **Formulário de contato** via Server Action + Resend + reCAPTCHA v3.
 - **Sitemap XML** gerado por script (`generate-sitemap.js`).
 
 ## Requisitos
@@ -41,7 +41,7 @@ O comando `dev` inicia o servidor de desenvolvimento na porta `3000`.
 
 Copie `.env.example` para `.env.local` e configure:
 
-- `ZOHO_*` — SMTP do Zoho Mail (ver `docs/zoho-setup.md`)
+- `RESEND_*` — Resend (ver `docs/resend-setup.md`)
 - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` / `RECAPTCHA_SECRET_KEY` (ver `docs/recaptcha-setup.md`)
 
 ## Estrutura Principal
@@ -74,7 +74,7 @@ Deploy recomendado na Vercel — ver `docs/vercel-setup.md`.
 ## Checklist de Testes
 
 - [ ] Navegação de todas as seções (incluindo IA e Disponibilidade)
-- [ ] Formulário de contato (validação + envio via Zoho SMTP)
+- [ ] Formulário de contato (validação + envio via Resend)
 - [ ] Rotas `/curriculo`, `/sitemap`, 404
 - [ ] Metatags e JSON-LD via DevTools
 - [ ] `npm run test:e2e` (Playwright)
