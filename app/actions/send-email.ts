@@ -13,7 +13,8 @@ function getResendClient() {
 
 function fromAddress() {
   const email =
-    process.env.RESEND_FROM_EMAIL?.trim() || "noreply@solunorde.com.br";
+    process.env.RESEND_FROM_EMAIL?.trim() ||
+    "noreply@natanaelsilvalima.dev.br";
   return `Natanael Silva Lima <${email}>`;
 }
 
