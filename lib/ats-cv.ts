@@ -16,7 +16,7 @@ export function generateAtsCvText(): string {
   const lines: string[] = [
     siteConfig.name.toUpperCase(),
     siteConfig.title,
-    `${siteConfig.email} | ${siteConfig.linkedin.replace("https://", "")} | ${siteConfig.github.replace("https://", "")}`,
+    `${siteConfig.email} | WhatsApp ${siteConfig.whatsapp.display} | ${siteConfig.linkedin.replace("https://", "")} | ${siteConfig.github.replace("https://", "")}`,
     siteConfig.location,
     "",
     section("Resumo Profissional", [professionalSummary.replace(/\n/g, " ")]),
