@@ -1323,6 +1323,10 @@ body {
   background: rgba(24, 23, 23, 0.2);
 }
 
+.contact-method-icon.whatsapp {
+  background: rgba(37, 211, 102, 0.2);
+}
+
 .contact-method-content {
   flex-grow: 1;
 }

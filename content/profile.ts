@@ -13,7 +13,12 @@ export const siteConfig = {
       "Lidero equipes técnicas e construo soluções escaláveis que impactam milhões de usuários.",
   },
   yearsOfExperience: 7,
-  email: "taelima1997@gmail.com",
+  email: "contato@solunorde.com.br",
+  telephone: "+5599981744603",
+  whatsapp: {
+    display: "(99) 98174-4603",
+    href: "https://wa.me/5599981744603",
+  },
   linkedin: "https://linkedin.com/in/natanaelvich",
   github: "https://github.com/natanaelvich",
   location: "Timbiras, MA • Remoto",
@@ -415,12 +420,20 @@ export const education = [
 
 export const contactMethods = [
   {
-    href: "mailto:taelima1997@gmail.com",
+    href: `mailto:${siteConfig.email}`,
     label: "Email",
-    value: "taelima1997@gmail.com",
+    value: siteConfig.email,
     icon: "fas fa-envelope",
     className: "email",
     ariaLabel: "Enviar email",
+  },
+  {
+    href: siteConfig.whatsapp.href,
+    label: "WhatsApp",
+    value: siteConfig.whatsapp.display,
+    icon: "fab fa-whatsapp",
+    className: "whatsapp",
+    ariaLabel: "Abrir WhatsApp",
   },
   {
     href: "https://linkedin.com/in/natanaelvich",

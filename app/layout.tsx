@@ -124,6 +124,7 @@ export default function RootLayout({
                 addressCountry: "BR",
               },
               email: siteConfig.email,
+              telephone: siteConfig.telephone,
             }),
           }}
         />

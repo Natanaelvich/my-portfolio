@@ -8,7 +8,7 @@ const outputPath = path.join(__dirname, "..", "public", "natan-cv-ats.txt");
 const text = `${"=".repeat(60)}
 NATANAEL SILVA LIMA
 Tech Lead & Desenvolvedor Fullstack
-taelima1997@gmail.com | linkedin.com/in/natanaelvich | github.com/natanaelvich
+contato@solunorde.com.br | WhatsApp (99) 98174-4603 | linkedin.com/in/natanaelvich | github.com/natanaelvich
 Timbiras, MA - Remoto
 ${"=".repeat(60)}
 
