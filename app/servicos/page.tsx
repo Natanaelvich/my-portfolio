@@ -73,7 +73,7 @@ export default function ServicosPage() {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              <Icon name="fas fa-calendar-check" /> Agendar conversa
+              <Icon name="fas fa-calendar-check" /> Falar no LinkedIn
             </a>
             <Link href="/#contact" className="btn btn-secondary">
               Enviar mensagem

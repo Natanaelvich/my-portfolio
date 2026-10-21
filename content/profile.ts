@@ -1,18 +1,18 @@
 export const siteConfig = {
   name: "Natanael Silva Lima",
   shortName: "Natanael Lima",
-  title: "Tech Lead & Desenvolvedor Fullstack",
+  title: "Full Stack Tech Lead",
   heroTitle: "Construo produtos digitais que",
   heroTitleAccent: "chegam à produção.",
   tagline:
-    "Tech Lead & Fullstack Developer especializado em React, React Native, Node.js e AI Agents.",
+    "Full Stack Tech Lead especializado em React, React Native, Node.js e AI Agents.",
   heroRole: {
     title: "Tech Lead @",
     company: "Grupo Abril",
     description:
-      "Lidero equipes técnicas e construo soluções escaláveis que impactam milhões de usuários.",
+      "Lidero equipes técnicas e construo soluções escaláveis em produção.",
   },
-  yearsOfExperience: 7,
+  experienceSince: 2020,
   email: "contato@solunorde.com.br",
   telephone: "+5599981744603",
   whatsapp: {
@@ -25,22 +25,14 @@ export const siteConfig = {
   domain: "https://www.natanaelsilvalima.dev.br",
 } as const;
 
-export const siteDescription = `Tech Lead e Desenvolvedor Fullstack especializado em React, React Native, Node.js e AI Agents. ${siteConfig.yearsOfExperience}+ anos de experiência liderando equipes e desenvolvendo aplicações escaláveis.`;
+export const siteDescription = `Full Stack Tech Lead especializado em React, React Native, Node.js e AI Agents. Desde ${siteConfig.experienceSince} liderando equipes e desenvolvendo aplicações escaláveis.`;
 
-export const professionalSummary = `Tech Lead e Desenvolvedor Fullstack com mais de ${siteConfig.yearsOfExperience} anos de experiência em construção e liderança de sistemas web e mobile em escala.
+export const professionalSummary = `Full Stack Tech Lead com experiência desde ${siteConfig.experienceSince} em construção e liderança de sistemas web e mobile em escala.
 Atuação forte em definição de arquitetura, tomada de decisões técnicas, CI/CD, observabilidade e integração com cloud.
-Experiência liderando times e entregando produtos críticos com milhões de usuários, utilizando Node.js, React, React Native e soluções baseadas em IA.`;
+Experiência liderando times e entregando produtos críticos em produção, utilizando Node.js, React, React Native e soluções baseadas em IA.`;
 
 export const availability = {
-  status: "DISPONÍVEL PARA NOVAS OPORTUNIDADES",
   workMode: "Remoto (Brasil)",
-  contractTypes: ["CLT", "PJ"],
-  targetRoles: [
-    "Tech Lead",
-    "Senior Full Stack",
-    "Senior React Native",
-    "AI Engineer",
-  ],
   stackFocus: ["React Native", "Node.js", "TypeScript", "AI Agents"],
   responseTime: "Resposta em até 24 horas",
 } as const;
@@ -51,7 +43,6 @@ export const headerNavLinks = [
   { href: "#experience", label: "Experiência" },
   { href: "#projects", label: "Projetos" },
   { href: "#ai-projects", label: "IA" },
-  { href: "#availability", label: "Disponibilidade" },
   { href: "#contact", label: "Contato" },
   { href: "/blog", label: "Blog" },
 ] as const;
@@ -62,7 +53,6 @@ export const navLinks = [
   { href: "#open-source", label: "Open Source" },
   { href: "#certifications", label: "Certificações" },
   { href: "/curriculo", label: "Currículo" },
-  { href: "/servicos", label: "Serviços" },
 ] as const;
 
 export const heroTechStack = [
@@ -75,20 +65,20 @@ export const heroTechStack = [
 export const heroStats = [
   {
     icon: "fas fa-cube",
-    value: "3+",
-    label: "Apps publicados nas lojas",
+    value: "6",
+    label: "apps publicados nas lojas",
     accent: "#a855f7",
   },
   {
     icon: "fas fa-users",
-    value: "5+ anos",
+    value: "Desde 2020",
     label: "desenvolvendo produtos digitais",
     accent: "#eab308",
   },
   {
     icon: "fas fa-globe",
-    value: "Milhões",
-    label: "de usuários impactados",
+    value: "Tech Lead",
+    label: "no Grupo Abril",
     accent: "#a855f7",
   },
   {
@@ -100,7 +90,7 @@ export const heroStats = [
 ] as const;
 
 export const aboutStats = [
-  { value: "7+", label: "Anos de Experiência" },
+  { value: "2020", label: "Na área desde" },
   { value: "5+", label: "Empresas Atendidas" },
   { value: "3", label: "Posições de Liderança" },
   { value: "8+", label: "Projetos Desenvolvidos" },
@@ -122,7 +112,7 @@ export const experienceEntries: ExperienceEntry[] = [
     period: "Out 2023 - Presente",
     type: "clt",
     description:
-      "Liderança técnica no desenvolvimento de aplicativos, sites e serviços que atendem milhões de usuários. Implementação de monitoramento ativo e deploy automatizado para App Store e Google Play.",
+      "Liderança técnica no desenvolvimento de aplicativos, sites e serviços em produção. Implementação de monitoramento ativo e deploy automatizado para App Store e Google Play.",
     techs: ["React Native", "Node.js", "Google Cloud", "AI Agents"],
   },
   {
@@ -240,9 +230,9 @@ export const professionalProjects = [
     alt: "APPS Grupo Abril - Aplicativos Mobile",
     title: "APPS Grupo Abril",
     description:
-      "Aplicativos mobile e serviços que atendem milhões de usuários com monitoramento ativo, alta disponibilidade e deploy automatizado para as lojas.",
+      "Aplicativos mobile e serviços em produção com monitoramento ativo, alta disponibilidade e deploy automatizado para as lojas.",
     techs: ["React Native", "Node.js", "Google Cloud"],
-    metrics: "Milhões de usuários • Monitoramento 24/7",
+    metrics: "Apps em produção • Monitoramento ativo",
   },
   {
     image: "/projeto-coamo.png",
@@ -318,6 +308,63 @@ export const professionalProjects = [
   },
 ] as const;
 
+export const solunordeApps = [
+  {
+    image: "/apps/macrobolt.png",
+    alt: "Ícone do app Macrobolt",
+    title: "Macrobolt",
+    description:
+      "Contador de calorias e macros com IA: foto do prato, voz ou código de barras.",
+    techs: ["IA", "Nutrição", "Mobile"],
+    link: { href: "https://www.solunorde.com.br/macrobolt", label: "Ver na Solunorde" },
+  },
+  {
+    image: "/apps/leafkind.png",
+    alt: "Ícone do app Leafkind",
+    title: "Leafkind",
+    description:
+      "Identifica plantas por foto, avisa quando regar e diagnostica folhas com IA.",
+    techs: ["IA", "Plantas", "Mobile"],
+    link: { href: "https://www.solunorde.com.br/leafkind", label: "Ver na Solunorde" },
+  },
+  {
+    image: "/apps/torlyn.png",
+    alt: "Ícone do app Torlyn",
+    title: "Torlyn",
+    description:
+      "A foto da ficha de treino vira plano semanal, com registro de séries e coach com IA.",
+    techs: ["IA", "Treino", "Mobile"],
+    link: { href: "https://www.solunorde.com.br/torlyn", label: "Ver na Solunorde" },
+  },
+  {
+    image: "/apps/sipbysip.png",
+    alt: "Ícone do app SipBySip",
+    title: "SipBySip",
+    description:
+      "Lembretes de hidratação personalizados, progresso visual e coach com IA.",
+    techs: ["IA", "Hidratação", "Mobile"],
+    link: { href: "https://www.solunorde.com.br/sip-by-sip", label: "Ver na Solunorde" },
+  },
+  {
+    image: "/apps/habitup.png",
+    alt: "Ícone do app HabitUp",
+    title: "HabitUp",
+    description:
+      "Rastreador de hábitos com coaching motivacional e recomendações por IA.",
+    techs: ["IA", "Hábitos", "Mobile"],
+    link: { href: "https://www.solunorde.com.br/habitup", label: "Ver na Solunorde" },
+  },
+  {
+    image: "/apps/servicolocal.png",
+    alt: "Ícone do app Serviço Local",
+    title: "Serviço Local",
+    description:
+      "Conecta você a profissionais de serviços locais da sua região.",
+    techs: ["Serviços locais", "Busca", "Mobile"],
+    link: { href: "https://www.servicolocalapp.com.br", label: "Ver o site" },
+  },
+] as const;
+
 export const personalProjects = [
   {
     image: "/project1.webp",
@@ -330,8 +377,8 @@ export const personalProjects = [
   },
   {
     image: "/project2.webp",
-    alt: "Gole A Gole - App de Hidratação",
-    title: "Gole A Gole",
+    alt: "SipBySip - App de Hidratação",
+    title: "SipBySip",
     description:
       "App para lembrar de beber água e manter-se hidratado facilmente. Solução mobile inovadora para saúde e bem-estar.",
     techs: ["React Native", "Lembretes", "Hidratação", "Saúde"],
@@ -354,18 +401,6 @@ export const personalProjects = [
       "Encontre e conecte-se com profissionais locais facilmente! Plataforma de busca com avaliações e conexões.",
     techs: ["React Native", "Busca Local", "Avaliações", "Conexão"],
     link: { href: "https://www.servicolocalapp.com.br/", label: "Visitar Site" },
-  },
-  {
-    image: "/contali-website.png",
-    alt: "Contali - Contabilidade via WhatsApp",
-    title: "Contali",
-    description:
-      "Contabilidade eficiente pelo WhatsApp. Facilite a gestão contábil da sua empresa com suporte exclusivo via WhatsApp.",
-    techs: ["Website", "WhatsApp", "Contabilidade", "Gestão Fiscal"],
-    link: {
-      href: "https://www.contaliservicoscontabeis.com.br/",
-      label: "Visitar Site",
-    },
   },
 ] as const;
 
@@ -469,7 +504,6 @@ export const footerSocialLinks = [
 export const footerLinks = [
   { href: "/sitemap", label: "Mapa do Site" },
   { href: "/blog", label: "Blog" },
-  { href: "/servicos", label: "Serviços" },
   { href: "/curriculo", label: "Currículo" },
   { href: "/#contact", label: "Contato" },
 ] as const;
@@ -489,7 +523,7 @@ export const resumeExperiences: ResumeExperience[] = [
     company: "Grupo Abril",
     period: "Out 2023 - Presente",
     bullets: [
-      "Liderança técnica no desenvolvimento de aplicativos e serviços com base instalada de milhões de usuários, definindo arquitetura, padrões de código e pipelines de entrega contínua",
+      "Liderança técnica no desenvolvimento de aplicativos e serviços em produção, definindo arquitetura, padrões de código e pipelines de entrega contínua",
       "Implementação de monitoramento ativo e alertas em produção, reduzindo tempo de resposta a incidentes e aumentando a confiabilidade dos sistemas",
       "Deploy automatizado para App Store e Google Play com integração de testes E2E em pipelines CI/CD, garantindo qualidade e agilidade nas entregas",
       "Desenvolvimento de Cloud Functions e AI Agents para otimização de fluxos internos, aumentando eficiência operacional e reduzindo custos de infraestrutura",

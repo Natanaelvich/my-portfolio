@@ -1,12 +1,10 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Portfolio homepage", () => {
-  test("loads hero with open to work badge and correct title", async ({ page }) => {
+  test("loads hero with correct title and no open to work badge", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator(".hero-title")).toContainText("chegam à produção");
-    await expect(page.locator(".open-to-work-badge")).toContainText(
-      "DISPONÍVEL PARA NOVAS OPORTUNIDADES"
-    );
+    await expect(page.locator(".open-to-work-badge")).toHaveCount(0);
   });
 
   test("navigation includes new sections", async ({ page }) => {
@@ -34,7 +32,7 @@ test.describe("Portfolio homepage", () => {
 
   test("availability includes scheduling link", async ({ page }) => {
     await page.goto("/#availability");
-    await expect(page.locator("#availability")).toContainText("Marcar horário");
+    await expect(page.locator("#availability")).toContainText("Falar no LinkedIn");
   });
 
   test("contact form has visible labels", async ({ page }) => {
@@ -72,9 +70,8 @@ test.describe("Auxiliary pages", () => {
     await expect(page.locator("h1")).toContainText("Solunorde");
   });
 
-  test("curriculo page loads with Contali", async ({ page }) => {
+  test("curriculo page loads", async ({ page }) => {
     await page.goto("/curriculo");
-    await expect(page.locator("body")).toContainText("Contali");
     await expect(page.locator("body")).toContainText("Grupo Abril");
     await expect(page.locator(".cv-actions")).toBeVisible();
   });
@@ -122,11 +119,11 @@ test.describe("Assets and branding", () => {
 });
 
 test.describe("SEO metadata", () => {
-  test("meta description mentions 7+ years", async ({ page }) => {
+  test("meta description mentions experience since 2020", async ({ page }) => {
     await page.goto("/");
     const description = await page
       .locator('meta[name="description"]')
       .getAttribute("content");
-    expect(description).toContain("7+");
+    expect(description).toContain("2020");
   });
 });

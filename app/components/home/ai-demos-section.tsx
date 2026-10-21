@@ -37,8 +37,7 @@ export function AiDemosSection({ demos }: AiDemosSectionProps) {
       <div className="container">
         <h2 className="section-title">Demos dos Projetos de IA</h2>
         <p className="section-subtitle">
-          Walkthrough visual dos projetos. Vídeos Loom podem ser configurados via variáveis
-          de ambiente.
+          Walkthrough visual dos projetos.
         </p>
 
         <div className="demo-tabs">

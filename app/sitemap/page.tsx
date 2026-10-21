@@ -14,11 +14,10 @@ const portfolioSections = [
   { href: "/#experience", label: "Experiência Profissional" },
   { href: "/#skills", label: "Habilidades Técnicas" },
   { href: "/#projects", label: "Projetos Profissionais" },
-  { href: "/#personal-projects", label: "Projetos Pessoais" },
+  { href: "/#solunorde-apps", label: "Apps da Solunorde" },
   { href: "/#ai-projects", label: "Projetos de IA & Automação" },
   { href: "/#open-source", label: "Open Source" },
   { href: "/#certifications", label: "Certificações" },
-  { href: "/#availability", label: "Disponibilidade" },
   { href: "/blog", label: "Blog" },
   { href: "/servicos", label: "Serviços" },
   { href: "/#contact", label: "Contato" },
@@ -42,7 +41,7 @@ const externalLinks = [
   },
   {
     href: "https://solunorde.com.br/sip-by-sip/",
-    label: "Gole A Gole",
+    label: "SipBySip",
     icon: "fas fa-tint",
   },
   {
@@ -54,11 +53,6 @@ const externalLinks = [
     href: "https://www.servicolocalapp.com.br/",
     label: "Serviço Local",
     icon: "fas fa-map-marker-alt",
-  },
-  {
-    href: "https://www.contaliservicoscontabeis.com.br/",
-    label: "Contali",
-    icon: "fas fa-calculator",
   },
 ];
 

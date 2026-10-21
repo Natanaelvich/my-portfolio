@@ -1,17 +1,17 @@
 ============================================================
 NATANAEL SILVA LIMA
-Tech Lead & Desenvolvedor Fullstack
+Full Stack Tech Lead
 contato@solunorde.com.br | WhatsApp (99) 98174-4603 | linkedin.com/in/natanaelvich | github.com/natanaelvich
 Timbiras, MA - Remoto
 ============================================================
 
 RESUMO PROFISSIONAL
-Tech Lead e Desenvolvedor Fullstack com mais de 7 anos de experiencia em construcao e lideranca de sistemas web e mobile em escala. Atuacao em arquitetura, CI/CD, observabilidade e integracao com cloud. Experiencia liderando times e entregando produtos criticos com milhoes de usuarios, utilizando Node.js, React, React Native e solucoes baseadas em IA.
+Full Stack Tech Lead com experiencia desde 2020 em construcao e lideranca de sistemas web e mobile em escala. Atuacao em arquitetura, CI/CD, observabilidade e integracao com cloud. Experiencia liderando times e entregando produtos criticos em producao, utilizando Node.js, React, React Native e solucoes baseadas em IA.
 
 EXPERIENCIA PROFISSIONAL
 
 Senior Full Stack Engineer & Tech Lead — Grupo Abril (Out 2023 - Presente)
-- Lideranca tecnica em apps e servicos com milhoes de usuarios
+- Lideranca tecnica em apps e servicos em producao
 - Monitoramento ativo, alertas e deploy automatizado para App Store e Google Play
 - Cloud Functions e AI Agents para otimizacao de fluxos internos
 Tecnologias: React Native, Node.js, Google Cloud, AI Agents

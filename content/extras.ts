@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     slug: "tech-lead-escala",
     title: "Tech Lead em escala: liderança técnica sem perder velocidade",
     excerpt:
-      "Mentoria, padrões, CI/CD e monitoramento — como equilibrar qualidade e entrega em times que atendem milhões de usuários.",
+      "Mentoria, padrões, CI/CD e monitoramento — como equilibrar qualidade e entrega em times que mantêm apps em produção.",
     date: "2026-03-15",
     readTime: "5 min",
     tags: ["Liderança", "CI/CD", "DevOps"],
@@ -125,9 +125,9 @@ export interface ImpactHighlight {
 export const impactHighlights: ImpactHighlight[] = [
   {
     company: "Grupo Abril",
-    context: "Tech Lead · Apps em escala nacional",
+    context: "Tech Lead · Apps em produção",
     outcome:
-      "Liderança técnica em aplicativos com milhões de usuários, deploy automatizado para lojas e monitoramento ativo em produção.",
+      "Liderança técnica em aplicativos em produção, deploy automatizado para lojas e monitoramento ativo em produção.",
   },
   {
     company: "COAMO Agroindustrial",

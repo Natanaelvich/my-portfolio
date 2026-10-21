@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Icon } from "@/app/components/svg-icon";
 import {
-  availability,
   heroStats,
   heroTechStack,
   siteConfig,
@@ -16,10 +15,6 @@ export function HeroSection() {
         <div className="hero-content">
           <div className="hero-copy">
             <div className="hero-intro">
-              <span className="open-to-work-badge">
-                <Icon name="fas fa-circle" />
-                {availability.status}
-              </span>
               <h1 className="hero-title">
                 {siteConfig.heroTitle}{" "}
                 <span className="hero-title-accent">

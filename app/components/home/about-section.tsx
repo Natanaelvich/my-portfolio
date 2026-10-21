@@ -8,10 +8,10 @@ export function AboutSection() {
         <div className="about-content">
           <div className="about-text">
             <p>
-              Sou um Tech Lead e Desenvolvedor Fullstack com mais de 7 anos de
-              experiência em desenvolvimento de software. Atualmente trabalho no
+              Sou Full Stack Tech Lead com experiência em
+              desenvolvimento de software desde 2020. Atualmente trabalho no
               Grupo Abril, liderando o desenvolvimento de aplicativos e serviços
-              que atendem milhões de usuários.
+              em produção.
             </p>
             <p>
               Minha especialidade está em criar soluções mobile-first com React Native,

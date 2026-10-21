@@ -211,7 +211,7 @@ function buildConfirmationEmail(data: SanitizedEmailData): string {
         <p>${escapeHtml(data.subject)}</p>
         <p style="margin-top: 20px;"><strong>Atenciosamente,</strong></p>
         <p><strong>Natanael Silva Lima</strong></p>
-        <p>Tech Lead & Desenvolvedor Fullstack</p>
+        <p>Full Stack Tech Lead</p>
       </div>
     </div>
     <div class="footer">

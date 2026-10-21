@@ -59,11 +59,11 @@ function generateSitemapXML() {
             comment: 'Seção Projetos Profissionais',
         },
         {
-            loc: `${domain}/#personal-projects`,
+            loc: `${domain}/#solunorde-apps`,
             lastmod: currentDate,
             changefreq: 'monthly',
             priority: '0.7',
-            comment: 'Seção Projetos Pessoais',
+            comment: 'Seção Apps da Solunorde',
         },
         {
             loc: `${domain}/#ai-projects`,
@@ -77,7 +77,7 @@ function generateSitemapXML() {
             lastmod: currentDate,
             changefreq: 'monthly',
             priority: '0.7',
-            comment: 'Seção Disponibilidade',
+            comment: 'Seção Como trabalho',
         },
         {
             loc: `${domain}/#contact`,

@@ -1,6 +1,6 @@
 import {
   aiProjects,
-  personalProjects,
+  solunordeApps,
   professionalProjects,
 } from "@/content/profile";
 import { aiDemos } from "@/content/extras";
@@ -39,10 +39,10 @@ export function HomePageContent() {
           projects={professionalProjects}
         />
         <ProjectsGridSection
-          id="personal-projects"
+          id="solunorde-apps"
           className="personal-projects"
-          title="Projetos Pessoais"
-          projects={personalProjects}
+          title="Apps da Solunorde"
+          projects={solunordeApps}
         />
         <ProjectsGridSection
           id="ai-projects"

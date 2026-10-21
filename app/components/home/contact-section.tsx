@@ -9,8 +9,7 @@ export function ContactSection() {
         <div className="contact-header">
           <h2 className="section-title">Entre em Contato</h2>
           <p className="contact-subtitle">
-            Estou sempre aberto a novas oportunidades e parcerias interessantes. Vamos
-            criar algo incrível juntos!
+            Vamos conversar sobre projetos e parcerias interessantes.
           </p>
         </div>
         <div className="contact-content">

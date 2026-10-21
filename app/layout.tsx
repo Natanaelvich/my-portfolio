@@ -11,7 +11,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteTitle = `${siteConfig.name} - ${siteConfig.heroTitle} | Portfólio`;
+const siteTitle =
+  "Natanael Silva Lima · Full Stack Tech Lead (React Native, Node.js, IA)";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
@@ -64,26 +65,6 @@ export const metadata: Metadata = {
   },
 };
 
-const jobPostingSchema = {
-  "@context": "https://schema.org",
-  "@type": "JobPosting",
-  title: "Tech Lead / Senior Full Stack / Senior React Native",
-  description: siteDescription,
-  hiringOrganization: {
-    "@type": "Organization",
-    name: siteConfig.name,
-    sameAs: siteConfig.domain,
-  },
-  jobLocationType: "TELECOMMUTE",
-  applicantLocationRequirements: {
-    "@type": "Country",
-    name: "Brazil",
-  },
-  employmentType: ["FULL_TIME", "CONTRACTOR"],
-  datePosted: "2026-01-01",
-  validThrough: "2026-12-31",
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -99,7 +80,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: siteConfig.name,
-              jobTitle: siteConfig.title,
+              jobTitle: "Full Stack Tech Lead",
               description: siteDescription,
               url: siteConfig.domain,
               sameAs: [siteConfig.linkedin, siteConfig.github],
@@ -126,12 +107,6 @@ export default function RootLayout({
               email: siteConfig.email,
               telephone: siteConfig.telephone,
             }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jobPostingSchema),
           }}
         />
       </head>
